@@ -15,498 +15,423 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,700;9..144,1,300;9..144,1,400;9..144,1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
---bg:#0d0d0d;
---cream:#f4ede1;
---accent:#d54b14;
---muted:#8a8780;
---border:rgba(255,255,255,.08);
+:root {
+  --bg:     #0d0d0d;
+  --cream:  #f4ede1;
+  --accent: #c94a0d;
+  --muted:  #7a7570;
+  --border: rgba(255,255,255,.07);
+  --surface:rgba(255,255,255,.03);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+  cursor:none;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity:.04;
+  pointer-events:none;
+  z-index:9998;
 }
 
-html{
-scroll-behavior:smooth;
-}
+img { width:100%; display:block; }
+a   { color:inherit; text-decoration:none; }
+section { padding:8rem 6vw; position:relative; }
 
-body{
-background:var(--bg);
-color:var(--cream);
-font-family:'Inter',sans-serif;
-overflow-x:hidden;
-line-height:1.6;
-}
 
-body::before{
-content:'';
-position:fixed;
-inset:0;
-background-image:url('https://grainy-gradients.vercel.app/noise.svg');
-opacity:.05;
-pointer-events:none;
-z-index:999;
+/* ── CURSOR ── */
+.cursor {
+  position:fixed;
+  width:14px; height:14px;
+  background:var(--cream);
+  border-radius:50%;
+  pointer-events:none;
+  mix-blend-mode:difference;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .18s ease, height .18s ease, background .18s ease;
 }
+.cursor.link { width:44px; height:44px; background:var(--accent); }
+@media(hover:none){ .cursor { display:none; } body { cursor:auto; } }
 
-img{
-width:100%;
-display:block;
-}
 
-a{
-color:inherit;
-text-decoration:none;
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0;
+  width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.5rem 4vw;
+  z-index:1000;
+  mix-blend-mode:difference;
 }
-
-section{
-padding:8rem 6vw;
-position:relative;
+nav .logo {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.8rem; letter-spacing:.22em;
 }
+nav ul { display:flex; gap:2rem; list-style:none; }
+nav a  { font-size:.85rem; opacity:.75; transition:.3s; letter-spacing:.05em; }
+nav a:hover { opacity:1; }
 
-nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:1.5rem 4vw;
-z-index:1000;
-mix-blend-mode:difference;
-}
 
-nav .logo{
-font-family:'JetBrains Mono',monospace;
-font-size:.8rem;
-letter-spacing:.2em;
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:space-between; gap:4rem;
+  position:relative; overflow:hidden;
 }
+.hero-left { max-width:60%; z-index:2; }
 
-nav ul{
-display:flex;
-gap:2rem;
-list-style:none;
+.hero-tag {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem; letter-spacing:.22em; color:var(--muted);
+  margin-bottom:2rem;
 }
-
-nav a{
-font-size:.9rem;
-opacity:.8;
-transition:.3s;
+.hero h1 {
+  font-family:'Fraunces',serif;
+  font-size:12vw; line-height:.88; font-weight:300;
 }
+.hero h1 span { font-style:italic; color:var(--accent); }
 
-nav a:hover{
-opacity:1;
-color:var(--accent);
+.hero-copy {
+  max-width:520px; margin-top:2.5rem;
+  font-size:1.05rem; color:#cfc8bc; font-weight:300;
 }
 
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:4rem;
-position:relative;
-overflow:hidden;
-}
+.hero-right { width:30%; flex-shrink:0; }
+.hero-right img { border-radius:28px; filter:grayscale(.08); }
 
-.hero-left{
-max-width:60%;
-z-index:2;
+.hero-ghost {
+  position:absolute;
+  font-family:'Fraunces',serif;
+  font-size:18vw; line-height:1;
+  pointer-events:none; user-select:none; white-space:nowrap;
 }
+.hero-ghost-1 { right:-2%; top:10%;   color:var(--cream);  opacity:.025; }
+.hero-ghost-2 { left:-1%; bottom:6%; color:var(--accent); opacity:.03; font-style:italic; }
 
-.hero-tag{
-font-family:'JetBrains Mono',monospace;
-font-size:.8rem;
-letter-spacing:.2em;
-color:var(--muted);
-margin-bottom:2rem;
+.scroll-cue {
+  margin-top:4rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem; color:var(--muted); letter-spacing:.2em;
+  display:flex; align-items:center; gap:.8rem;
 }
-
-.hero h1{
-font-family:'Fraunces',serif;
-font-size:12vw;
-line-height:.9;
-font-weight:400;
+.scroll-cue::before {
+  content:''; display:block;
+  width:40px; height:1px; background:var(--muted);
 }
 
-.hero h1 span{
-font-style:italic;
-color:var(--accent);
-}
 
-.hero-copy{
-max-width:520px;
-margin-top:2rem;
-font-size:1.1rem;
-color:#d9d2c8;
+/* ── SECTION LABEL ── */
+.section-number {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem; letter-spacing:.22em; color:var(--accent);
+  margin-bottom:4rem; display:block;
 }
 
-.hero-ghost{
-position:absolute;
-right:-5%;
-top:15%;
-font-size:18vw;
-font-family:'Fraunces',serif;
-opacity:.03;
-white-space:nowrap;
-pointer-events:none;
-}
 
-.hero-right{
-width:30%;
-position:relative;
-}
+/* ── ABOUT ── */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
 
-.hero-right img{
-border-radius:30px;
-filter:grayscale(.1);
+.about-title {
+  font-family:'Fraunces',serif;
+  font-size:4.5rem; line-height:1; font-weight:300;
 }
+.about-title em { font-style:italic; color:var(--accent); }
 
-.scroll-cue{
-margin-top:4rem;
-font-family:'JetBrains Mono',monospace;
-font-size:.75rem;
-color:var(--muted);
-}
+.about-copy { font-size:1.05rem; color:#cac2b7; font-weight:300; }
+.about-copy p { margin-bottom:1.5rem; }
+.highlight { color:var(--accent); font-weight:500; }
 
-.about-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:4rem;
-align-items:start;
-}
 
-.section-number{
-font-family:'JetBrains Mono',monospace;
-font-size:.8rem;
-letter-spacing:.2em;
-color:var(--accent);
-margin-bottom:2rem;
-display:block;
+/* ── MARQUEE ── */
+.marquee {
+  overflow:hidden;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  padding:1.4rem 0; margin-top:6rem;
+  background:rgba(244,237,225,.015);
 }
-
-.about-title{
-font-family:'Fraunces',serif;
-font-size:5rem;
-line-height:1;
-max-width:500px;
+.marquee-track {
+  display:flex; gap:3rem; width:max-content;
+  animation:marquee 30s linear infinite;
+  font-family:'JetBrains Mono',monospace;
+  text-transform:uppercase; font-size:.8rem; letter-spacing:.22em; color:#bdb5a9;
+  align-items:center;
 }
-
-.about-copy{
-font-size:1.1rem;
-color:#d0c7bc;
+.marquee-track .dot { color:var(--accent); font-size:.5rem; }
+@keyframes marquee {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
 }
 
-.about-copy p{
-margin-bottom:1.5rem;
-}
 
-.highlight{
-color:var(--accent);
-font-weight:600;
-}
+/* ── PROJECTS ── */
+.projects { display:flex; flex-direction:column; gap:10rem; }
 
-.marquee{
-overflow:hidden;
-border-top:1px solid var(--border);
-border-bottom:1px solid var(--border);
-padding:1.5rem 0;
-margin-top:6rem;
-}
+.project { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.project:nth-child(even) { direction:rtl; }
+.project:nth-child(even) .project-content { direction:ltr; }
 
-.marquee-track{
-display:flex;
-gap:4rem;
-width:max-content;
-animation:marquee 28s linear infinite;
-font-family:'JetBrains Mono',monospace;
-text-transform:uppercase;
-font-size:.9rem;
-letter-spacing:.2em;
-}
+.project-image { position:relative; overflow:hidden; border-radius:28px; }
+.project-image img { transition:transform .7s ease; }
+.project:hover img { transform:scale(1.04); }
 
-@keyframes marquee{
-from{transform:translateX(0);}
-to{transform:translateX(-50%);}
+.metric-box {
+  position:absolute; bottom:20px; left:20px;
+  background:rgba(13,13,13,.82); backdrop-filter:blur(12px);
+  padding:1rem 1.3rem; border-radius:16px;
+  border:1px solid rgba(255,255,255,.1);
 }
-
-.projects{
-display:flex;
-flex-direction:column;
-gap:10rem;
+.metric-box span {
+  display:block; font-family:'JetBrains Mono',monospace;
+  font-size:.68rem; letter-spacing:.16em; color:var(--muted); margin-bottom:.3rem;
 }
+.metric-box strong { font-family:'Fraunces',serif; font-size:1.4rem; color:var(--cream); }
 
-.project{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:4rem;
-align-items:center;
+.project-category {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem; letter-spacing:.22em; color:var(--accent); margin-bottom:1rem;
 }
-
-.project:nth-child(even){
-direction:rtl;
+.project-title {
+  font-family:'Fraunces',serif;
+  font-size:4rem; line-height:.95; margin-bottom:1.5rem; font-weight:300;
 }
-
-.project:nth-child(even) .project-content{
-direction:ltr;
+.project-description {
+  font-size:1rem; color:#c5bdb2; margin-bottom:2rem;
+  font-weight:300; line-height:1.75;
 }
-
-.project-image{
-position:relative;
-overflow:hidden;
-border-radius:30px;
+.project-link {
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:'JetBrains Mono',monospace; font-size:.82rem;
+  border-bottom:1px solid var(--accent); padding-bottom:.3rem;
+  color:var(--accent); transition:gap .3s;
 }
+.project-link:hover { gap:1rem; }
+.project-link::after { content:'→'; }
 
-.project-image img{
-transition:transform .6s ease;
-}
 
-.project:hover img{
-transform:scale(1.04);
+/* ── BINGO FEATURED ── */
+.project-featured {
+  display:block;
+  border:1px solid var(--border); border-radius:30px;
+  padding:3rem; background:var(--surface);
+  position:relative; overflow:hidden;
 }
-
-.metric-box{
-position:absolute;
-bottom:20px;
-left:20px;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(10px);
-padding:1rem 1.2rem;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.1);
+.project-featured::before {
+  content:'BINGO';
+  position:absolute; right:-1.5rem; top:-1.5rem;
+  font-family:'Fraunces',serif; font-size:14rem; font-style:italic;
+  opacity:.03; line-height:1; pointer-events:none; color:var(--accent);
 }
 
-.metric-box span{
-display:block;
-font-family:'JetBrains Mono',monospace;
-font-size:.7rem;
-letter-spacing:.15em;
-color:var(--muted);
-margin-bottom:.3rem;
+.featured-top {
+  display:grid; grid-template-columns:1fr auto;
+  align-items:start; gap:2rem; margin-bottom:2.5rem;
 }
-
-.metric-box strong{
-font-size:1.3rem;
-color:var(--cream);
+.featured-body {
+  display:grid; grid-template-columns:1.2fr 1fr;
+  gap:1.5rem; margin-bottom:2.5rem;
 }
+.featured-image { border-radius:20px; overflow:hidden; }
 
-.project-category{
-font-family:'JetBrains Mono',monospace;
-font-size:.75rem;
-letter-spacing:.2em;
-color:var(--accent);
-margin-bottom:1rem;
+.featured-metrics {
+  display:grid; grid-template-columns:1fr 1fr;
+  grid-template-rows:repeat(3,1fr); gap:.8rem;
 }
-
-.project-title{
-font-family:'Fraunces',serif;
-font-size:4.5rem;
-line-height:.95;
-margin-bottom:1.5rem;
+.metric-tile {
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border); border-radius:14px;
+  padding:1.2rem;
+  display:flex; flex-direction:column; justify-content:space-between; gap:.5rem;
+  transition:background .3s, border-color .3s;
 }
-
-.project-description{
-font-size:1.05rem;
-color:#cfc7bc;
-margin-bottom:2rem;
+.metric-tile:hover {
+  background:rgba(201,74,13,.07);
+  border-color:rgba(201,74,13,.3);
 }
-
-.project-link{
-display:inline-flex;
-align-items:center;
-gap:.6rem;
-font-family:'JetBrains Mono',monospace;
-font-size:.85rem;
-border-bottom:1px solid var(--accent);
-padding-bottom:.3rem;
-color:var(--accent);
+.metric-tile span {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem; letter-spacing:.16em; color:var(--muted);
 }
-
-.awards-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:1.5rem;
-margin-top:4rem;
+.metric-tile strong {
+  font-family:'Fraunces',serif; font-size:1.9rem; color:var(--cream); line-height:1;
 }
 
-.award-card{
-border:1px solid var(--border);
-padding:2rem;
-border-radius:24px;
-background:rgba(255,255,255,.02);
+.featured-footer p {
+  font-size:1rem; color:#c5bdb2; font-weight:300; line-height:1.75;
 }
 
-.award-card h3{
-font-family:'Fraunces',serif;
-font-size:1.7rem;
-margin-bottom:1rem;
-}
 
-.clients{
-padding-top:2rem;
+/* ── TYPOGRAPHIC CARDS ── */
+.type-projects {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.2rem; margin-top:8rem;
 }
-
-.client-list{
-display:flex;
-flex-wrap:wrap;
-gap:1rem;
-margin-top:3rem;
+.type-card {
+  border:1px solid var(--border); border-radius:24px;
+  padding:2.5rem; background:var(--surface);
+  position:relative; overflow:hidden;
+  min-height:240px; display:flex; flex-direction:column; justify-content:flex-end;
+  transition:background .3s, transform .4s ease, border-color .3s;
 }
-
-.client{
-padding:.9rem 1.4rem;
-border:1px solid var(--border);
-border-radius:999px;
-font-family:'JetBrains Mono',monospace;
-font-size:.8rem;
-color:#d8d0c6;
+.type-card:hover {
+  background:rgba(255,255,255,.05);
+  transform:translateY(-5px);
+  border-color:rgba(201,74,13,.25);
 }
-
-.timeline{
-margin-top:4rem;
-border-left:1px solid var(--border);
-padding-left:2rem;
-display:flex;
-flex-direction:column;
-gap:3rem;
+.type-card-bg {
+  position:absolute; top:-1.8rem; right:-0.8rem;
+  font-family:'Fraunces',serif; font-size:9rem; font-style:italic;
+  opacity:.07; line-height:1; color:var(--cream);
+  pointer-events:none; user-select:none;
 }
-
-.timeline-item{
-position:relative;
+.type-card-title {
+  font-family:'Fraunces',serif;
+  font-size:1.9rem; line-height:1; margin:.6rem 0 .8rem; font-weight:300;
 }
+.type-card p { font-size:.88rem; color:#9a9289; font-weight:300; line-height:1.55; }
 
-.timeline-item::before{
-content:'';
-position:absolute;
-left:-2.45rem;
-top:.3rem;
-width:12px;
-height:12px;
-background:var(--accent);
-border-radius:50%;
-}
 
-.timeline h3{
-font-family:'Fraunces',serif;
-font-size:2rem;
-margin-bottom:.5rem;
+/* ── AWARDS TICKER ── */
+.awards-ticker {
+  overflow:hidden;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  padding:1.2rem 0; margin-bottom:4rem;
 }
-
-.timeline span{
-display:block;
-font-family:'JetBrains Mono',monospace;
-font-size:.8rem;
-letter-spacing:.15em;
-color:var(--muted);
-margin-bottom:1rem;
+.awards-ticker-track {
+  display:flex; gap:2.5rem; width:max-content;
+  animation:marquee 20s linear infinite;
+  font-family:'Fraunces',serif; font-size:1.4rem; font-style:italic;
+  color:var(--cream); align-items:center;
 }
+.awards-ticker-track .star { color:var(--accent); font-style:normal; font-size:.9rem; }
 
-.contact{
-text-align:center;
-padding-bottom:10rem;
+.awards-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem;
 }
-
-.contact h2{
-font-family:'Fraunces',serif;
-font-size:7vw;
-line-height:1;
-margin-bottom:2rem;
+.award-card {
+  border:1px solid var(--border); padding:2rem; border-radius:24px;
+  background:var(--surface); transition:border-color .3s;
+}
+.award-card:hover { border-color:rgba(201,74,13,.4); }
+.award-icon {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem; letter-spacing:.2em; color:var(--accent);
+  margin-bottom:1.2rem; display:block;
+}
+.award-card h3 {
+  font-family:'Fraunces',serif;
+  font-size:1.55rem; margin-bottom:.8rem; font-weight:300;
 }
+.award-card p { font-size:.88rem; color:#9a9289; line-height:1.55; }
 
-.contact-links{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:2rem;
-margin-top:3rem;
+
+/* ── CLIENTS ── */
+.client-list { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:3rem; }
+.client {
+  padding:.8rem 1.3rem; border:1px solid var(--border); border-radius:999px;
+  font-family:'JetBrains Mono',monospace; font-size:.75rem; color:#c5bdb2;
+  letter-spacing:.05em; transition:border-color .3s, color .3s;
 }
+.client:hover { border-color:rgba(201,74,13,.5); color:var(--cream); }
 
-.contact-links a{
-font-family:'JetBrains Mono',monospace;
-font-size:.9rem;
-padding:1rem 1.5rem;
-border:1px solid var(--border);
-border-radius:999px;
-transition:.3s;
+
+/* ── EXPERIENCE ── */
+.timeline {
+  margin-top:4rem; border-left:1px solid var(--border);
+  padding-left:2.5rem; display:flex; flex-direction:column; gap:3rem;
 }
+.timeline-item { position:relative; transition:transform .35s ease; }
+.timeline-item:hover { transform:translateX(1rem); }
 
-.contact-links a:hover{
-background:var(--accent);
-border-color:var(--accent);
-color:#fff;
+.timeline-item::before {
+  content:'';
+  position:absolute; left:-2.75rem; top:.45rem;
+  width:10px; height:10px; background:var(--accent); border-radius:50%;
+  transition:transform .3s;
 }
+.timeline-item:hover::before { transform:scale(1.5); }
 
-footer{
-padding:2rem 6vw;
-border-top:1px solid var(--border);
-display:flex;
-justify-content:space-between;
-font-family:'JetBrains Mono',monospace;
-font-size:.75rem;
-color:var(--muted);
+.timeline-item h3 {
+  font-family:'Fraunces',serif; font-size:2rem; margin-bottom:.4rem; font-weight:300;
+}
+.timeline-item > span {
+  display:block; font-family:'JetBrains Mono',monospace;
+  font-size:.75rem; letter-spacing:.16em; color:var(--muted); margin-bottom:.8rem;
 }
+.timeline-item p { font-size:.95rem; color:#b5ada2; font-weight:300; max-width:600px; }
 
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s ease;
+
+/* ── CONTACT ── */
+.contact { text-align:center; padding-bottom:10rem; }
+.contact-headline {
+  font-family:'Fraunces',serif; font-size:7vw; line-height:1;
+  margin-bottom:1.5rem; font-weight:300;
+}
+.contact-headline em { font-style:italic; color:var(--accent); }
+.contact-sub {
+  font-size:1.05rem; color:#b0a99f; max-width:500px;
+  margin:0 auto 3rem; font-weight:300;
+}
+.contact-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1.2rem; }
+.contact-links a {
+  font-family:'JetBrains Mono',monospace; font-size:.82rem;
+  padding:.9rem 1.4rem; border:1px solid var(--border);
+  border-radius:999px; transition:.3s; letter-spacing:.05em;
 }
+.contact-links a:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
 
-.fade.visible{
-opacity:1;
-transform:translateY(0);
+
+/* ── FOOTER ── */
+footer {
+  padding:2rem 6vw; border-top:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--muted);
 }
+
+
+/* ── FADE IN ── */
+.fade { opacity:0; transform:translateY(36px); transition:opacity .9s ease, transform .9s ease; }
+.fade.visible { opacity:1; transform:translateY(0); }
+
 
+/* ── RESPONSIVE ── */
 @media(max-width:1000px){
+  .hero { flex-direction:column; justify-content:center; padding-top:7rem; }
+  .hero-left, .hero-right { max-width:100%; width:100%; }
+  .hero h1 { font-size:17vw; }
+  .hero-ghost { display:none; }
 
-.hero{
-flex-direction:column;
-justify-content:center;
-padding-top:6rem;
-}
+  .about-grid,
+  .project,
+  .awards-grid,
+  .type-projects,
+  .featured-body,
+  .featured-top { grid-template-columns:1fr; }
 
-.hero-left,
-.hero-right{
-max-width:100%;
-width:100%;
-}
+  .project:nth-child(even) { direction:ltr; }
+  .project-title, .about-title { font-size:2.8rem; }
+  .contact-headline { font-size:3.5rem; }
+  nav ul { display:none; }
 
-.hero h1{
-font-size:18vw;
-}
-
-.about-grid,
-.project,
-.awards-grid{
-grid-template-columns:1fr;
-}
-
-.project:nth-child(even){
-direction:ltr;
-}
-
-.project-title{
-font-size:3rem;
-}
-
-.about-title{
-font-size:3rem;
-}
-
-.contact h2{
-font-size:4rem;
-}
-
-nav ul{
-display:none;
-}
+  .featured-metrics { grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); }
+  .project-featured::before { display:none; }
+  .featured-top { grid-template-columns:1fr; }
 }
 
 </style>
@@ -514,359 +439,437 @@ display:none;
 
 <body>
 
-<nav>
-<div class="logo">DHRUV STHAPAK</div>
+<div class="cursor" id="cursor"></div>
 
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#work">Work</a></li>
-<li><a href="#awards">Awards</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+<nav>
+  <div class="logo">DHRUV STHAPAK</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<section class="hero">
 
-<div class="hero-left fade">
-<div class="hero-tag">MARKETING · BRAND · ACCOUNT MANAGEMENT</div>
+<!-- ─── HERO ─── -->
+<section class="hero" id="hero">
 
-<h1>Dhruv <span>Sthapak</span></h1>
+  <div class="hero-left fade">
+    <div class="hero-tag">MARKETING · BRAND · ACCOUNT MANAGEMENT</div>
+    <h1>Dhruv<br><span>Sthapak</span></h1>
+    <p class="hero-copy">
+      I build brands worth believing in — and the campaigns, accounts, and growth systems that scale them. Hospitality. FMCG. Retail. D2C. EdTech. Seven years deep and still allergic to boring.
+    </p>
+    <div class="scroll-cue">SCROLL TO ENTER</div>
+  </div>
 
-<p class="hero-copy">
-I build brands worth believing in and the campaigns, accounts, and growth systems that scale them. Hospitality. FMCG. Retail. D2C. EdTech. Seven years deep and still allergic to boring marketing.
-</p>
+  <div class="hero-right fade">
+    <img loading="lazy" src="https://www.pixelfox.agency/wp-content/uploads/2023/11/Bingo-AI-Meme-Gallery.webp" alt="ITC Bingo AI Meme Gallery campaign visual">
+  </div>
 
-<div class="scroll-cue">
-SCROLL TO ENTER
-</div>
-</div>
-
-<div class="hero-right fade">
-<img loading="lazy" src="https://www.pixelfox.agency/wp-content/uploads/2023/11/Bingo-AI-Meme-Gallery.webp" alt="ITC Bingo AI Meme Gallery campaign visual">
-</div>
-
-<div class="hero-ghost">STRATEGY</div>
+  <div class="hero-ghost hero-ghost-1" id="ghost1">MARKETER</div>
+  <div class="hero-ghost hero-ghost-2" id="ghost2">Storyteller</div>
 
 </section>
 
+
+<!-- ─── ABOUT ─── -->
 <section id="about">
+  <span class="section-number">001 / ABOUT</span>
 
-<span class="section-number">001 / ABOUT</span>
+  <div class="about-grid">
 
-<div class="about-grid">
+    <div class="fade">
+      <h2 class="about-title">Not just campaigns.<br><em>Momentum.</em></h2>
+    </div>
 
-<div class="fade">
-<h2 class="about-title">
-Not just campaigns. <em>Momentum.</em>
-</h2>
-</div>
+    <div class="about-copy fade">
+      <p>
+        Based in Pune and originally from Kareli, Madhya Pradesh, I've spent the last <span class="highlight">7+ years</span> building campaigns that sit somewhere between brand storytelling and performance pressure.
+      </p>
+      <p>
+        From Marriott hospitality launches to AI-powered FMCG campaigns, I've handled everything from account growth and lifecycle marketing to influencer ecosystems and integrated launch strategy.
+      </p>
+      <p>
+        I've worked across agencies, EdTech, retail, D2C, hospitality, and institutional ecosystems spanning IITs, NITs, and IIITs. Somewhere along the way, I picked up a few shiny things: DIGIES Gold, Foxglove Gold, Trendies Gold, Digixx Silver.
+      </p>
+    </div>
 
-<div class="about-copy fade">
-<p>
-Based in Pune and originally from Kareli, Madhya Pradesh, I've spent the last <span class="highlight">7+ years</span> building campaigns that sit somewhere between brand storytelling and performance pressure.
-</p>
+  </div>
 
-<p>
-From Marriott hospitality launches to AI-powered FMCG campaigns, I've handled everything from account growth and lifecycle marketing to influencer ecosystems and integrated launch strategy.
-</p>
-
-<p>
-I've worked across agencies, EdTech, retail, D2C, hospitality, and institutional ecosystems spanning IITs, NITs, and IIITs. Somewhere along the way, I picked up a few shiny things too: DIGIES Gold, Foxglove Gold, Trendies, Digixx.
-</p>
-
-</div>
-
-</div>
-
-<div class="marquee">
-<div class="marquee-track">
-<span>WESTIN PUNE</span>
-<span>ITC BINGO</span>
-<span>PHOENIX CITADEL</span>
-<span>BARUKAS</span>
-<span>CONRAD BANGALORE</span>
-<span>DIGIES GOLD</span>
-<span>MARRIOTT</span>
-<span>PIXELFOX</span>
-<span>KNOWLEDGE UNITS</span>
-<span>PHN TECHNOLOGY</span>
-<span>WESTIN PUNE</span>
-<span>ITC BINGO</span>
-<span>PHOENIX CITADEL</span>
-</div>
-</div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>WESTIN PUNE</span><span class="dot">◆</span>
+      <span>ITC BINGO</span><span class="dot">◆</span>
+      <span>PHOENIX CITADEL</span><span class="dot">◆</span>
+      <span>BARUKAS</span><span class="dot">◆</span>
+      <span>CONRAD BANGALORE</span><span class="dot">◆</span>
+      <span>DIGIES GOLD</span><span class="dot">◆</span>
+      <span>MARRIOTT</span><span class="dot">◆</span>
+      <span>PIXELFOX</span><span class="dot">◆</span>
+      <span>KNOWLEDGE UNITS</span><span class="dot">◆</span>
+      <span>PHN TECHNOLOGY</span><span class="dot">◆</span>
+      <span>WESTIN PUNE</span><span class="dot">◆</span>
+      <span>ITC BINGO</span><span class="dot">◆</span>
+      <span>PHOENIX CITADEL</span><span class="dot">◆</span>
+      <span>BARUKAS</span><span class="dot">◆</span>
+      <span>CONRAD BANGALORE</span><span class="dot">◆</span>
+      <span>DIGIES GOLD</span><span class="dot">◆</span>
+      <span>MARRIOTT</span><span class="dot">◆</span>
+      <span>PIXELFOX</span><span class="dot">◆</span>
+      <span>KNOWLEDGE UNITS</span><span class="dot">◆</span>
+      <span>PHN TECHNOLOGY</span><span class="dot">◆</span>
+    </div>
+  </div>
 
 </section>
 
+
+<!-- ─── WORK ─── -->
 <section id="work">
+  <span class="section-number">002 / SELECTED WORK</span>
 
-<span class="section-number">002 / SELECTED WORK</span>
+  <div class="projects">
 
-<div class="projects">
+    <!-- Westin Pune -->
+    <article class="project fade">
+      <div class="project-image">
+        <img loading="lazy" src="https://cdn.prod.website-files.com/602bed59c77fbcdd2f74890e/672b02f84949352906071f0c_Artboard%201%20copy.webp" alt="Westin Pune — Marriott artboard campaign creative">
+        <div class="metric-box">
+          <span>REACH</span>
+          <strong>5.5M Eyes</strong>
+        </div>
+      </div>
+      <div class="project-content">
+        <div class="project-category">HOSPITALITY · BRAND MARKETING</div>
+        <h2 class="project-title">Westin Pune</h2>
+        <p class="project-description">
+          Westin Pune wasn't short on glamour. It was short on people knowing about it. We built a multi-channel seasonal engine around staycations, Chef's Table experiences, Marriott Bonvoy moments, and festive F&B. Christmas and New Year timing did the rest.
+        </p>
+        <a class="project-link" target="_blank" href="https://www.knowledgeunits.com/projects/from-insights-to-impact-how-the-westin-pune-captured-5-5-million-eyes">View Case Study</a>
+      </div>
+    </article>
 
-<article class="project fade">
+    <!-- Barukas -->
+    <article class="project fade">
+      <div class="project-image">
+        <img loading="lazy" src="https://cdn.prod.website-files.com/602bed59c77fbcdd2f74890e/67289ccc2dd4b564ae7d6fc3_Frame%20249.png" alt="Barukas D2C performance marketing campaign">
+        <div class="metric-box">
+          <span>CPA</span>
+          <strong>$40 → $13</strong>
+        </div>
+      </div>
+      <div class="project-content">
+        <div class="project-category">D2C · PERFORMANCE</div>
+        <h2 class="project-title">Barukas</h2>
+        <p class="project-description">
+          Barukas had nuts. They didn't have a funnel. We rebuilt one from the ground up through creative simplification, influencer-driven content, Meta restructuring, and subscription-first lead gen. CPA collapsed. Sales came back to life.
+        </p>
+        <a class="project-link" target="_blank" href="https://www.knowledgeunits.com/projects/going-nuts-for-success-how-we-reduced-barukas-cpa-from-40-to-13">View Case Study</a>
+      </div>
+    </article>
 
-<div class="project-image">
-<img loading="lazy" src="https://cdn.prod.website-files.com/602bed59c77fbcdd2f74890e/672b02f84949352906071f0c_Artboard%201%20copy.webp" alt="Westin Pune campaign creative">
-<div class="metric-box">
-<span>REACH</span>
-<strong>5.5M Eyes</strong>
-</div>
-</div>
+    <!-- ITC Bingo — FEATURED COLLAGE -->
+    <article class="project-featured fade">
 
-<div class="project-content">
-<div class="project-category">HOSPITALITY · BRAND MARKETING</div>
-<h2 class="project-title">Westin Pune</h2>
+      <div class="featured-top">
+        <div>
+          <div class="project-category">FMCG · AI + UGC</div>
+          <h2 class="project-title">ITC Bingo<br>AI Meme Gallery</h2>
+        </div>
+        <a class="project-link" target="_blank" href="https://www.pixelfox.agency/our-work/itc-bingo-mad-angles-ai-meme-gallery/">View Case Study</a>
+      </div>
 
-<p class="project-description">
-Westin Pune wasn't short on glamour. It was short on people knowing about it. We built a multi-channel seasonal engine around staycations, Chef's Table experiences, Marriott Bonvoy moments, and festive F&B campaigns. Christmas and New Year timing did the rest.
-</p>
+      <div class="featured-body">
+        <div class="featured-image">
+          <img loading="lazy" src="https://www.pixelfox.agency/wp-content/uploads/2023/11/Bingo-AI-Meme-Gallery.webp" alt="ITC Bingo AI Meme Gallery campaign hero">
+        </div>
+        <div class="featured-metrics">
+          <div class="metric-tile">
+            <span>TOTAL REACH</span>
+            <strong>50.7M</strong>
+          </div>
+          <div class="metric-tile">
+            <span>IMPRESSIONS</span>
+            <strong>51.9M</strong>
+          </div>
+          <div class="metric-tile">
+            <span>ENGAGEMENT</span>
+            <strong>5.6M</strong>
+          </div>
+          <div class="metric-tile">
+            <span>UGC ENTRIES</span>
+            <strong>5,346</strong>
+          </div>
+          <div class="metric-tile">
+            <span>VIDEO VIEWS</span>
+            <strong>31.6M</strong>
+          </div>
+          <div class="metric-tile">
+            <span>MEDIA VALUE</span>
+            <strong>₹17.4L</strong>
+          </div>
+        </div>
+      </div>
 
-<a class="project-link" target="_blank" href="https://www.knowledgeunits.com/projects/from-insights-to-impact-how-the-westin-pune-captured-5-5-million-eyes">
-View Case Study
-</a>
+      <div class="featured-footer">
+        <p class="project-description">
+          We asked the internet what really happened in the Bingo TVC universe. Then we turned audience theories into AI-generated memes, music, animation, and rap storytelling using Midjourney, Runway, ChatGPT, Uberduck, and Musicfy. Chaos, but strategic chaos — and six numbers that don't lie.
+        </p>
+      </div>
 
-</div>
+    </article>
 
-</article>
+    <!-- Phoenix Citadel -->
+    <article class="project fade">
+      <div class="project-image">
+        <img loading="lazy" src="https://www.pixelfox.agency/wp-content/uploads/2023/12/citadel-thumbnail.jpg" alt="Phoenix Citadel mall launch campaign">
+        <div class="metric-box">
+          <span>REACH</span>
+          <strong>2.9M+</strong>
+        </div>
+      </div>
+      <div class="project-content">
+        <div class="project-category">RETAIL · LAUNCH CAMPAIGN</div>
+        <h2 class="project-title">Phoenix Citadel</h2>
+        <p class="project-description">
+          Not just another mall launch. We positioned Phoenix Citadel as the Mall of Madhya Pradesh and engineered the social momentum to match. Massive launch visibility. Aggressive growth. Regional cultural ownership.
+        </p>
+        <a class="project-link" target="_blank" href="https://www.pixelfox.agency/our-work/phoenix-citadel-mall-launch-campaign/">View Case Study</a>
+      </div>
+    </article>
 
-<article class="project fade">
+  </div>
 
-<div class="project-image">
-<img loading="lazy" src="https://cdn.prod.website-files.com/602bed59c77fbcdd2f74890e/67289ccc2dd4b564ae7d6fc3_Frame%20249.png" alt="Barukas D2C performance marketing campaign">
-<div class="metric-box">
-<span>CPA</span>
-<strong>$40 → $13</strong>
-</div>
-</div>
+  <!-- Typographic cards for projects without image assets -->
+  <div class="type-projects fade">
 
-<div class="project-content">
-<div class="project-category">D2C · PERFORMANCE</div>
-<h2 class="project-title">Barukas</h2>
+    <div class="type-card">
+      <div class="type-card-bg">C</div>
+      <div class="project-category">HOSPITALITY · SOCIAL</div>
+      <h3 class="type-card-title">Conrad Bangalore</h3>
+      <p>Pre-opening digital narrative and lifestyle content for Conrad's Bengaluru debut.</p>
+    </div>
 
-<p class="project-description">
-Barukas had nuts. They didn't have a funnel. We rebuilt one from the ground up through creative simplification, influencer-driven content, Meta restructuring, and subscription-first lead generation. CPA collapsed. Sales came back to life.
-</p>
+    <div class="type-card">
+      <div class="type-card-bg">P</div>
+      <div class="project-category">RETAIL · BRAND</div>
+      <h3 class="type-card-title">Palladium</h3>
+      <p>Premium mall positioning and launch visibility strategy across social and OOH.</p>
+    </div>
 
-<a class="project-link" target="_blank" href="https://www.knowledgeunits.com/projects/going-nuts-for-success-how-we-reduced-barukas-cpa-from-40-to-13">
-View Case Study
-</a>
+    <div class="type-card">
+      <div class="type-card-bg">F</div>
+      <div class="project-category">FMCG · SEASONAL</div>
+      <h3 class="type-card-title">Festive Campaigns</h3>
+      <p>High-frequency seasonal creative across FMCG and hospitality clients through Q4.</p>
+    </div>
 
-</div>
+    <div class="type-card">
+      <div class="type-card-bg">D</div>
+      <div class="project-category">EVENTS · EXPERIENTIAL</div>
+      <h3 class="type-card-title">Dinosaur World</h3>
+      <p>Social strategy and launch campaign for India's immersive dino experience.</p>
+    </div>
 
-</article>
+    <div class="type-card">
+      <div class="type-card-bg">i</div>
+      <div class="project-category">EDTECH · PERFORMANCE</div>
+      <h3 class="type-card-title">iTeskul</h3>
+      <p>Lead generation architecture and enrollment funnel rebuilding across digital channels.</p>
+    </div>
 
-<article class="project fade">
+    <div class="type-card">
+      <div class="type-card-bg">L</div>
+      <div class="project-category">EDTECH · BRAND</div>
+      <h3 class="type-card-title">Learnovate</h3>
+      <p>Brand positioning, lifecycle marketing, and digital growth infrastructure.</p>
+    </div>
 
-<div class="project-image">
-<img loading="lazy" src="https://www.pixelfox.agency/wp-content/uploads/2023/11/Bingo-AI-Meme-Gallery.webp" alt="ITC Bingo AI Meme Gallery visual">
-<div class="metric-box">
-<span>ENGAGEMENT</span>
-<strong>5.6M</strong>
-</div>
-</div>
-
-<div class="project-content">
-<div class="project-category">FMCG · AI + UGC</div>
-<h2 class="project-title">ITC Bingo AI Meme Gallery</h2>
-
-<p class="project-description">
-We asked the internet what really happened in the Bingo TVC universe. Then we turned audience theories into AI-generated memes, music, animation, and rap storytelling using Midjourney, Runway, ChatGPT, Uberduck, and Musicfy. Chaos, but strategic chaos.
-</p>
-
-<a class="project-link" target="_blank" href="https://www.pixelfox.agency/our-work/itc-bingo-mad-angles-ai-meme-gallery/">
-View Case Study
-</a>
-
-</div>
-
-</article>
-
-<article class="project fade">
-
-<div class="project-image">
-<img loading="lazy" src="https://www.pixelfox.agency/wp-content/uploads/2023/12/citadel-thumbnail.jpg" alt="Phoenix Citadel mall launch campaign">
-<div class="metric-box">
-<span>REACH</span>
-<strong>2.9M+</strong>
-</div>
-</div>
-
-<div class="project-content">
-<div class="project-category">RETAIL · LAUNCH CAMPAIGN</div>
-<h2 class="project-title">Phoenix Citadel</h2>
-
-<p class="project-description">
-Not just another mall launch. We positioned Phoenix Citadel as the Mall of Madhya Pradesh and engineered the social momentum to match. Massive launch visibility. Aggressive growth. Regional cultural ownership.
-</p>
-
-<a class="project-link" target="_blank" href="https://www.pixelfox.agency/our-work/phoenix-citadel-mall-launch-campaign/">
-View Case Study
-</a>
-
-</div>
-
-</article>
-
-</div>
+  </div>
 
 </section>
 
+
+<!-- ─── AWARDS ─── -->
 <section id="awards">
+  <span class="section-number">003 / AWARDS</span>
 
-<span class="section-number">003 / AWARDS</span>
+  <div class="awards-ticker">
+    <div class="awards-ticker-track">
+      <span>DIGIES Gold 2023</span><span class="star">★</span>
+      <span>Foxglove Gold 2023</span><span class="star">★</span>
+      <span>Trendies Gold 2023</span><span class="star">★</span>
+      <span>Digixx Silver 2023</span><span class="star">★</span>
+      <span>DIGIES Gold 2023</span><span class="star">★</span>
+      <span>Foxglove Gold 2023</span><span class="star">★</span>
+      <span>Trendies Gold 2023</span><span class="star">★</span>
+      <span>Digixx Silver 2023</span><span class="star">★</span>
+    </div>
+  </div>
 
-<div class="awards-grid fade">
+  <div class="awards-grid fade">
 
-<div class="award-card">
-<h3>DIGIES Gold</h3>
-<p>Best Use of UGC for ITC Bingo AI Meme Gallery.</p>
-</div>
+    <div class="award-card">
+      <span class="award-icon">DIGIES · GOLD</span>
+      <h3>Best Use of UGC</h3>
+      <p>ITC Bingo AI Meme Gallery — audience theories turned into AI-generated creative at scale.</p>
+    </div>
 
-<div class="award-card">
-<h3>Foxglove Gold</h3>
-<p>Hospitality campaign recognition for Phoenix Citadel launch strategy.</p>
-</div>
+    <div class="award-card">
+      <span class="award-icon">FOXGLOVE · GOLD</span>
+      <h3>Hospitality Campaign</h3>
+      <p>Phoenix Citadel launch strategy recognised for regional reach and cultural positioning.</p>
+    </div>
 
-<div class="award-card">
-<h3>Trendies Gold</h3>
-<p>Recognised for FMCG creativity and AI-led engagement storytelling.</p>
-</div>
+    <div class="award-card">
+      <span class="award-icon">TRENDIES · GOLD</span>
+      <h3>FMCG Creativity</h3>
+      <p>Recognised for AI-led engagement storytelling within branded consumer campaigns.</p>
+    </div>
 
-<div class="award-card">
-<h3>Digixx Silver</h3>
-<p>Generative AI execution within branded consumer campaigns.</p>
-</div>
+    <div class="award-card">
+      <span class="award-icon">DIGIXX · SILVER</span>
+      <h3>Generative AI</h3>
+      <p>Generative AI execution within branded consumer campaigns at production scale.</p>
+    </div>
 
-</div>
+  </div>
 
 </section>
 
+
+<!-- ─── CLIENTS ─── -->
 <section class="clients">
+  <span class="section-number">004 / CLIENTS</span>
 
-<span class="section-number">004 / CLIENTS</span>
-
-<div class="client-list fade">
-
-<div class="client">MARRIOTT</div>
-<div class="client">WESTIN</div>
-<div class="client">ITC</div>
-<div class="client">PHOENIX MALLS</div>
-<div class="client">BARUKAS</div>
-<div class="client">CONRAD</div>
-<div class="client">PHN TECHNOLOGY</div>
-<div class="client">KNOWLEDGE UNITS</div>
-<div class="client">PIXELFOX</div>
-<div class="client">LEARNOVATE</div>
-<div class="client">ITESKUL</div>
-
-</div>
+  <div class="client-list fade">
+    <div class="client">MARRIOTT</div>
+    <div class="client">WESTIN</div>
+    <div class="client">ITC</div>
+    <div class="client">PHOENIX MALLS</div>
+    <div class="client">BARUKAS</div>
+    <div class="client">CONRAD</div>
+    <div class="client">PHN TECHNOLOGY</div>
+    <div class="client">KNOWLEDGE UNITS</div>
+    <div class="client">PIXELFOX</div>
+    <div class="client">LEARNOVATE</div>
+    <div class="client">ITESKUL</div>
+  </div>
 
 </section>
 
+
+<!-- ─── EXPERIENCE ─── -->
 <section id="experience">
+  <span class="section-number">005 / EXPERIENCE</span>
 
-<span class="section-number">005 / EXPERIENCE</span>
+  <div class="timeline fade">
 
-<div class="timeline fade">
+    <div class="timeline-item">
+      <h3>PHN Technology</h3>
+      <span>2025 — PRESENT</span>
+      <p>Key Account Manager leading lifecycle marketing, institutional growth, GTM planning, and client portfolio expansion across IIT, NIT, and IIIT ecosystems.</p>
+    </div>
 
-<div class="timeline-item">
-<h3>PHN Technology</h3>
-<span>2025 — PRESENT</span>
-<p>Key Account Manager leading lifecycle marketing, institutional growth, GTM planning, and client portfolio expansion across IIT, NIT, and IIIT ecosystems.</p>
-</div>
+    <div class="timeline-item">
+      <h3>Knowledge Units</h3>
+      <span>2024</span>
+      <p>Led high-performance campaigns across hospitality and D2C brands including Westin Pune and Barukas.</p>
+    </div>
 
-<div class="timeline-item">
-<h3>Knowledge Units</h3>
-<span>2024</span>
-<p>Led high-performance campaigns across hospitality and D2C brands including Westin Pune and Barukas.</p>
-</div>
+    <div class="timeline-item">
+      <h3>Pixelfox Agency</h3>
+      <span>NOV 2022 — APR 2024</span>
+      <p>Built integrated social, influencer, and AI-powered campaigns across FMCG, hospitality, and retail. Award-winning work on ITC Bingo and Phoenix Citadel.</p>
+    </div>
 
-<div class="timeline-item">
-<h3>Pixelfox Agency</h3>
-<span>2022 — 2024</span>
-<p>Built integrated social, influencer, and AI-powered campaigns across FMCG, hospitality, and retail.</p>
-</div>
+    <div class="timeline-item">
+      <h3>Brand Aura</h3>
+      <span>2021 — 2022</span>
+      <p>Scaled multilingual lead-generation ecosystems and digital acquisition infrastructure.</p>
+    </div>
 
-<div class="timeline-item">
-<h3>Brand Aura</h3>
-<span>2021 — 2022</span>
-<p>Scaled multilingual lead-generation ecosystems and digital acquisition infrastructure.</p>
-</div>
+    <div class="timeline-item">
+      <h3>Impetus Advertising</h3>
+      <span>2019 — 2021</span>
+      <p>Turned Pune's F&B brands into loud local favourites through aggressive social-first campaigns.</p>
+    </div>
 
-<div class="timeline-item">
-<h3>Impetus Advertising</h3>
-<span>2019 — 2021</span>
-<p>Turned Pune's F&B brands into loud local favourites through aggressive social-first campaigns.</p>
-</div>
-
-</div>
+  </div>
 
 </section>
 
+
+<!-- ─── CONTACT ─── -->
 <section id="contact" class="contact">
+  <span class="section-number">006 / CONTACT</span>
 
-<span class="section-number">006 / CONTACT</span>
+  <h2 class="contact-headline fade">
+    Got a brand<br><em>worth telling?</em>
+  </h2>
 
-<h2 class="fade">
-Got a brand worth telling?
-</h2>
+  <p class="contact-sub fade">
+    Let's build something people remember before they even realise why they remember it.
+  </p>
 
-<p class="fade">
-Let's build something people remember before they even realise why they remember it.
-</p>
-
-<div class="contact-links fade">
-
-<a href="mailto:sthapakdhruv@gmail.com">
-sthapakdhruv@gmail.com
-</a>
-
-<a href="tel:+919754979942">
-+91 9754979942
-</a>
-
-<a target="_blank" href="https://linkedin.com/in/dhruvsthapak">
-LinkedIn
-</a>
-
-<a target="_blank" href="#">
-Download CV
-</a>
-
-</div>
+  <div class="contact-links fade">
+    <a href="mailto:sthapakdhruv@gmail.com">sthapakdhruv@gmail.com</a>
+    <a href="tel:+919754979942">+91 97549 79942</a>
+    <a target="_blank" href="https://linkedin.com/in/dhruvsthapak">LinkedIn</a>
+    <a target="_blank" href="#">Download CV</a>
+  </div>
 
 </section>
+
 
 <footer>
-<div>© 2026 DHRUV STHAPAK</div>
-<div>Built with strategy, caffeine, and unreasonable standards.</div>
+  <div>© 2026 DHRUV STHAPAK</div>
+  <div>Built with strategy, caffeine, and unreasonable standards.</div>
 </footer>
+
 
 <script>
 
+// ── Custom cursor with lerp follow
+const cursor = document.getElementById('cursor');
+let mx = 0, my = 0, cx = 0, cy = 0;
+
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+(function tick() {
+  cx += (mx - cx) * .14;
+  cy += (my - cy) * .14;
+  cursor.style.left = cx + 'px';
+  cursor.style.top  = cy + 'px';
+  requestAnimationFrame(tick);
+})();
+
+document.querySelectorAll('a, button, .type-card, .award-card, .metric-tile').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('link'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('link'));
+});
+
+
+// ── Dual-speed parallax ghosts
+const ghost1 = document.getElementById('ghost1');
+const ghost2 = document.getElementById('ghost2');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (ghost1) ghost1.style.transform = `translateY(${y * .12}px)`;
+  if (ghost2) ghost2.style.transform = `translateY(${y * .22}px)`;
+}, { passive: true });
+
+
+// ── Fade-in on scroll
 const fades = document.querySelectorAll('.fade');
-
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-}
-});
-},{
-threshold:0.15
-});
-
-fades.forEach(el => observer.observe(el));
-
-window.addEventListener('scroll',()=>{
-
-const ghost = document.querySelector('.hero-ghost');
-
-ghost.style.transform = `translateY(${window.scrollY * 0.2}px)`;
-
-});
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .12 });
+fades.forEach(el => io.observe(el));
 
 </script>
 
