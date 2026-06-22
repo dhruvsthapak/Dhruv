@@ -1,699 +1,1154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content="Dhruv Sthapak — Senior marketing and key account professional. Westin · ITC Bingo · Phoenix · Conrad · Barukas. Pune, India."/>
-<meta property="og:title" content="Dhruv Sthapak — Marketing & Brand"/>
-<meta property="og:description" content="7+ years building brands worth believing in across FMCG, hospitality, D2C and retail."/>
-<meta property="og:type" content="website"/>
-<title>Dhruv Sthapak — Marketing & Brand</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,700;9..144,1,300;9..144,1,400;9..144,1,700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin" rel="stylesheet"/>
-<style>
-/* ── Variables ── */
-:root{
-  --bone:#ede4d2; --bone-2:#e3d8c0;
-  --ink:#0f0e0c;  --ink-2:#1d1a14;
-  --char:#d9e74a; --char-2:#b8c635;
-  --terra:#c4694a;
-  --plum:#3d2a3d;
-  --muted:#7a7468; --muted-2:#4a4538;
-  --ease:cubic-bezier(.2,.8,.2,1);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dhruv Sthapak — Content &amp; Brand Marketer. Every project below links to the original published work.">
+  <meta property="og:title" content="Dhruv Sthapak — Content &amp; Brand Marketing">
+  <meta property="og:description" content="Real campaigns. Real links. If it ran, it's here.">
+  <meta property="og:type" content="website">
+  <title>Dhruv Sthapak — Content &amp; Brand Marketer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:               #0d0d0d;
+      --ember:            #d54b14;
+      --ember-dim:        rgba(213,75,20,0.14);
+      --ember-border:     rgba(213,75,20,0.28);
+      --glass-fill:       rgba(255,255,255,0.04);
+      --glass-border:     rgba(255,255,255,0.08);
+      --glass-highlight:  rgba(255,255,255,0.08);
+      --text:             rgba(255,255,255,0.88);
+      --text-dim:         rgba(255,255,255,0.45);
+      --text-faint:       rgba(255,255,255,0.22);
+      --radius:           16px;
+      --ease:             cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-/* ── Reset ── */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bone);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;cursor:none}
-img{width:100%;display:block}
-a{color:inherit;text-decoration:none}
-section{padding:8rem 6vw}
-ul{list-style:none}
-a:focus-visible{outline:2px solid var(--char);outline-offset:3px}
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    a { color: inherit; text-decoration: none; }
 
-/* ── Cursor ── */
-#cdot{position:fixed;width:6px;height:6px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:opacity .18s var(--ease)}
-#cring{position:fixed;width:36px;height:36px;border:2px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .18s var(--ease),height .18s var(--ease),background .18s var(--ease),border-color .18s var(--ease),opacity .18s var(--ease)}
-#cring.on{width:68px;height:68px;background:var(--char);border-color:var(--char)}
-#cdot.off{opacity:0}
-@media(hover:none){#cdot,#cring{display:none}body{cursor:auto}}
+    /* ── CURSOR DOT ─────────────────────────────────────── */
+    #cursor-dot {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background 0.18s, transform 0.15s;
+      mix-blend-mode: difference;
+      will-change: left, top;
+    }
+    #cursor-dot.on-link {
+      background: var(--ember);
+      transform: translate(-50%, -50%) scale(2.6);
+    }
 
-/* ── Nav ── */
-.nav{position:fixed;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4vw;z-index:1000}
-.nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--ink-2)}
-.nav-pulse{width:7px;height:7px;background:var(--terra);border-radius:50%;animation:pulse 2.4s ease-in-out infinite}
-.nav-links{display:flex;gap:2rem}
-.nav-links a{font-size:.85rem;color:var(--ink-2);opacity:.7;position:relative;letter-spacing:.04em;transition:opacity .25s var(--ease)}
-.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1.5px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
-.nav-links a:hover{opacity:1}
-.nav-links a:hover::after{transform:scaleX(1)}
+    /* ── CURSOR BLOBS ───────────────────────────────────── */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      will-change: left, top;
+    }
+    #blob-ember {
+      width: 440px;
+      height: 440px;
+      background: var(--ember);
+      filter: blur(90px);
+      opacity: 0.16;
+    }
+    #blob-cool {
+      width: 320px;
+      height: 320px;
+      background: #1a4d8f;
+      filter: blur(80px);
+      opacity: 0.10;
+    }
 
-/* ── Hero ── */
-.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:6rem;background:var(--bone)}
-.ghost{position:absolute;pointer-events:none;user-select:none;font-family:'Fraunces',serif;line-height:1;color:transparent;white-space:nowrap}
-.ghost-1{top:8%;left:-2%;font-size:clamp(5rem,18vw,18rem);font-weight:400;-webkit-text-stroke:1.5px rgba(15,14,12,.07);letter-spacing:-.04em}
-.ghost-2{bottom:14%;right:-3%;font-size:clamp(4rem,14vw,14rem);font-weight:300;font-style:italic;-webkit-text-stroke:1px rgba(196,105,74,.1);letter-spacing:-.03em}
-.shape{position:absolute;pointer-events:none}
-.sh-circle{width:clamp(48px,7vw,90px);height:clamp(48px,7vw,90px);background:var(--char);border-radius:50%;top:22%;right:18%;animation:float 7s ease-in-out infinite}
-.sh-square{width:clamp(28px,4vw,55px);height:clamp(28px,4vw,55px);background:var(--terra);top:60%;left:12%;transform:rotate(35deg);animation:float 5s ease-in-out infinite .8s}
-.sh-line{width:clamp(70px,11vw,150px);height:2px;background:var(--ink-2);opacity:.25;top:76%;right:28%;animation:float 9s ease-in-out infinite 1.5s}
-.sh-ring{width:clamp(38px,5.5vw,72px);height:clamp(38px,5.5vw,72px);border:2px solid var(--ink);border-radius:50%;opacity:.12;top:40%;right:36%;animation:float 8s ease-in-out infinite .4s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.sh-square{transform-origin:center;animation-name:float-sq}
-@keyframes float-sq{0%,100%{transform:rotate(35deg) translateY(0)}50%{transform:rotate(35deg) translateY(-14px)}}
-.hero-content{position:relative;z-index:2;padding:0 6vw}
-.hero-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:1.8rem}
-.hero-name{font-family:'Fraunces',serif;font-size:clamp(4.5rem,17vw,17rem);line-height:.88;letter-spacing:-.045em;font-weight:400;color:var(--ink);margin-bottom:2rem}
-.hero-name .first{display:inline-block;position:relative}
-.hero-name .first::after{content:'';position:absolute;bottom:-.05em;left:0;right:0;height:4px;background:var(--char)}
-.hero-name .last{font-style:italic;font-weight:300;color:var(--terra)}
-.hero-tagline{font-size:1.1rem;font-weight:300;color:var(--muted-2);max-width:540px;line-height:1.7;border-left:3px solid var(--terra);padding-left:1.2rem;margin-bottom:4rem}
-.hero-bottom{display:flex;align-items:center;gap:3rem}
-.scroll-ind{display:flex;align-items:center;gap:.8rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.scroll-line{width:48px;height:1px;background:var(--muted);overflow:hidden;position:relative}
-.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--terra);animation:slide 2.4s cubic-bezier(.4,0,.2,1) infinite}
-@keyframes slide{0%{left:-100%}60%,100%{left:100%}}
-.avail{display:flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.avail-dot{width:7px;height:7px;background:var(--char);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
+    /* ── BACKGROUND STRUCTURE ───────────────────────────── */
+    #bg-vignette {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.72) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .bloom {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(130px);
+      opacity: 0.065;
+      will-change: transform;
+    }
+    #bloom-a { width: 560px; height: 560px; background: var(--ember); top: -140px; left: -80px; }
+    #bloom-b { width: 480px; height: 480px; background: #1a4d8f;   bottom: -100px; right: -90px; }
+    #bloom-c { width: 380px; height: 380px; background: #4a1a6e;   top: 42%; left: 50%; transform: translateX(-50%); }
 
-/* ── Marquee strips ── */
-.strip{overflow:hidden;background:var(--ink);padding:1.2rem 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
-.strip-track{display:flex;align-items:center;gap:2.5rem;width:max-content;animation:marquee 28s linear infinite;font-family:'JetBrains Mono',monospace;font-size:.8rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(237,228,210,.4)}
-.strip-track:hover{animation-play-state:paused}
-.strip-track em{font-style:italic;color:var(--char);font-family:'Fraunces',serif;letter-spacing:0;font-size:.95rem}
-.strip-track .dm{color:var(--terra);font-size:.5rem}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.clients-strip .strip{background:var(--char)}
-.clients-strip .strip-track{color:rgba(15,14,12,.5)}
-.clients-strip .strip-track em{color:var(--terra)}
-.clients-strip .strip-track .dm{color:var(--ink);opacity:.35}
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
 
-/* ── Section label ── */
-.sl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:4rem;display:block}
-.dk .sl{color:rgba(237,228,210,.3)}
+    /* ── GLASS PANEL ────────────────────────────────────── */
+    .glass {
+      background: var(--glass-fill);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow:
+        inset 0 1px 0 var(--glass-highlight),
+        0 8px 32px rgba(0,0,0,0.42);
+      border-radius: var(--radius);
+    }
 
-/* ── About (dark) ── */
-.about-s{background:var(--ink);color:var(--bone)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:5rem}
-.about-h{font-family:'Fraunces',serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:400;line-height:1.05;color:var(--bone)}
-.about-h em{font-style:italic;color:var(--char)}
-.about-q{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;line-height:1.6;color:rgba(237,228,210,.65);border-left:3px solid var(--char);padding-left:1.2rem;margin-top:2.5rem}
-.about-body{font-size:1.05rem;font-weight:300;color:rgba(237,228,210,.7)}
-.about-body p{margin-bottom:1.5rem}
-.about-body .hi{color:var(--char);font-weight:500}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding-top:4rem;border-top:1px solid rgba(255,255,255,.07)}
-.stat-n{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,4.5rem);line-height:1;letter-spacing:-.03em;color:var(--char);display:block;margin-bottom:.4rem}
-.stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,228,210,.3)}
+    /* ── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 20px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13,13,13,0.64);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: -1;
+    }
+    .nav-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-/* ── Work ── */
-.work-s{background:var(--bone);padding-bottom:4rem}
-.proj-num-row{display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:3rem;padding-bottom:1rem;border-bottom:1px solid rgba(15,14,12,.08)}
-.proj-article{padding:4rem 6vw;border-bottom:1px solid rgba(15,14,12,.07);opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.proj-article.vis{opacity:1;transform:translateY(0)}
-.proj-body{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.proj-article:nth-child(even) .proj-body{direction:rtl}
-.proj-article:nth-child(even) .proj-copy{direction:ltr}
-.proj-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:400;line-height:1;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--ink)}
-.proj-title em{font-style:italic;color:var(--terra)}
-.proj-desc{font-size:1rem;font-weight:300;color:var(--muted-2);line-height:1.75;margin-bottom:1.8rem;max-width:42ch}
-.metrics-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2rem}
-.mc{display:flex;flex-direction:column;border:1px solid rgba(15,14,12,.12);border-radius:10px;padding:.5rem .9rem}
-.mc .mn{font-family:'Fraunces',serif;font-style:italic;color:var(--char-2);font-size:1.3rem;line-height:1;letter-spacing:-.03em}
-.mc .ml{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
-.proj-link{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--terra);border-bottom:1px solid var(--terra);padding-bottom:.25rem;transition:gap .25s var(--ease),color .25s var(--ease)}
-.proj-link:hover{gap:.9rem;color:var(--ink);border-color:var(--ink)}
+    /* ── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ghost-text {
+      position: absolute;
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      color: var(--text-faint);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      will-change: transform;
+    }
+    #ghost-proof {
+      font-size: clamp(90px, 18vw, 220px);
+      top: 8%;
+      left: -1%;
+    }
+    #ghost-pitch {
+      font-size: clamp(70px, 13vw, 170px);
+      bottom: 12%;
+      right: -2%;
+    }
+    .hero-inner { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 22px;
+    }
+    .hero-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(54px, 9vw, 100px);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(22px, 3.8vw, 38px);
+      font-style: italic;
+      color: var(--text-dim);
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+    .hero-promise {
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      line-height: 1.85;
+      max-width: 460px;
+      padding-left: 20px;
+      border-left: 2px solid var(--ember);
+      margin-bottom: 48px;
+    }
+    .hero-promise em {
+      color: var(--ember);
+      font-style: normal;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+    }
+    .btn-ember {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--ember);
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-ember:hover { opacity: 0.86; transform: translateY(-2px); }
+    .hero-link {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .hero-link:hover { color: var(--text); }
+    .scroll-hint {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-faint);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: scrollBob 2.2s ease-in-out infinite;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--text-faint), transparent);
+    }
+    @keyframes scrollBob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
 
-/* ── CSS Panels ── */
-.panel{aspect-ratio:5/4;overflow:hidden;position:relative;border-radius:16px}
-.pb{position:absolute;top:14px;left:14px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:rgba(15,14,12,.7);color:var(--bone);padding:.3rem .7rem;border-radius:20px}
-.pc{position:absolute;bottom:14px;right:14px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:rgba(237,228,210,.28)}
+    /* ── PROOF STRIP ────────────────────────────────────── */
+    #proof-strip {
+      padding: 100px 0 110px;
+      position: relative;
+      z-index: 2;
+    }
+    .proof-line {
+      display: block;
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(22px, 4vw, 46px);
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text-dim);
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.72s var(--ease), transform 0.72s var(--ease);
+      margin-bottom: 10px;
+    }
+    .proof-line.visible { opacity: 1; transform: translateY(0); }
+    .proof-line:nth-child(2) { transition-delay: 0.18s; }
+    .proof-line:nth-child(3) { transition-delay: 0.38s; }
+    .proof-line .accent { color: var(--ember); }
 
-/* Westin */
-.p-westin{background:linear-gradient(140deg,#1e1710,#2d2215,#231a10)}
-.p-westin .wc{position:absolute;border-radius:10px;padding:1.2rem 1.5rem;transition:transform .35s var(--ease)}
-.p-westin .wc1{background:var(--bone);top:16%;left:10%;transform:rotate(-6deg)}
-.p-westin .wc2{background:var(--terra);top:46%;left:35%;transform:rotate(4deg)}
-.p-westin:hover .wc1{transform:rotate(-6deg) translateY(-10px)}
-.p-westin:hover .wc2{transform:rotate(4deg) translateY(-8px)}
-.wc1-n{font-family:'Fraunces',serif;font-size:3rem;line-height:1;color:var(--ink);letter-spacing:-.04em}
-.wc1-n em{color:var(--terra);font-size:2.2rem}
-.wc1-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
-.wc2-t{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:var(--bone);white-space:nowrap}
+    /* ── WORK SECTION ───────────────────────────────────── */
+    #work {
+      padding: 60px 0 120px;
+      position: relative;
+      z-index: 2;
+    }
+    .section-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 56px;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .card-span { grid-column: 1 / -1; }
 
-/* Barukas */
-.p-barukas{background:var(--bone-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem}
-.p-barukas .old{position:relative;font-family:'Fraunces',serif;font-size:clamp(2.8rem,7vw,4.5rem);color:var(--ink);line-height:1}
-.p-barukas .old::after{content:'';position:absolute;left:-4%;right:-4%;top:50%;height:3px;background:var(--terra);transform:rotate(-2deg)}
-.p-barukas .arr{font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:var(--muted)}
-.p-barukas .nw{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(3rem,8vw,5.5rem);color:var(--terra);line-height:1}
-.p-barukas .cl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+    /* ── CARD ───────────────────────────────────────────── */
+    .card {
+      overflow: hidden;
+      transition: box-shadow 0.3s var(--ease);
+      position: relative;
+    }
+    .card:hover {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 20px 56px rgba(0,0,0,0.52);
+    }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-thumb-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.55s var(--ease);
+    }
+    .card:hover .card-thumb-inner { transform: scale(1.05); }
+    .thumb-label {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(28px, 5vw, 60px);
+      color: rgba(255,255,255,0.14);
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1.1;
+    }
 
-/* Bingo */
-.p-bingo{background:var(--ink);min-height:200px}
-.bf{position:absolute;border:1.5px solid;border-radius:4px;padding:.45rem .9rem;font-family:'Fraunces',serif;font-style:italic;font-size:.85rem;white-space:nowrap;transition:transform .4s var(--ease)}
-.bf1{border-color:var(--bone);color:var(--bone);top:14%;left:7%;transform:rotate(-12deg)}
-.bf2{border-color:var(--char);color:var(--char);top:27%;left:20%;transform:rotate(5deg)}
-.bf3{border-color:var(--terra);color:var(--terra);top:52%;left:5%;transform:rotate(-4deg)}
-.bf4{border-color:rgba(237,228,210,.5);color:rgba(237,228,210,.5);top:58%;left:36%;transform:rotate(9deg)}
-.bf5{border-color:#7a4a7a;color:#b87ab8;top:32%;left:50%;transform:rotate(-9deg)}
-.p-bingo:hover .bf1{transform:rotate(-18deg) translate(-6px,-10px)}
-.p-bingo:hover .bf2{transform:rotate(10deg) translate(10px,-8px)}
-.p-bingo:hover .bf3{transform:rotate(-7deg) translate(-10px,6px)}
-.p-bingo:hover .bf4{transform:rotate(15deg) translate(12px,10px)}
-.p-bingo:hover .bf5{transform:rotate(-16deg) translate(-4px,-12px)}
+    /* Thumb gradient palettes */
+    .t-bingo    { background: linear-gradient(140deg, #1c0800 0%, #4e1200 55%, #7d2200 100%); }
+    .t-westin   { background: linear-gradient(140deg, #001818 0%, #003030 55%, #004848 100%); }
+    .t-barukas  { background: linear-gradient(140deg, #080818 0%, #181840 55%, #28285a 100%); }
+    .t-citadel  { background: linear-gradient(140deg, #1a0600 0%, #3c1400 55%, #5c2200 100%); }
+    .t-conrad   { background: linear-gradient(140deg, #0a0a0a 0%, #181818 55%, #262626 100%); }
+    .t-palladium{ background: linear-gradient(140deg, #080012 0%, #180030 55%, #28004e 100%); }
+    .t-scaler   { background: linear-gradient(140deg, #001800 0%, #003800 55%, #005800 100%); }
 
-/* Citadel */
-.p-citadel{background:linear-gradient(140deg,#1a1410,#261e15)}
-.p-citadel .clabel{position:absolute;top:16%;left:9%;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(.85rem,1.8vw,1.2rem);color:var(--bone);line-height:1.3;z-index:2;max-width:16ch}
-.cwindows{position:absolute;bottom:0;right:0;display:grid;grid-template-columns:repeat(7,1fr);gap:3px;padding:3px;width:65%;height:68%}
-.cw{border-radius:2px;background:rgba(237,228,210,.06)}
-.cw.lc{background:var(--char);opacity:.7}
-.cw.lt{background:var(--terra);opacity:.6}
-.cw.lb{background:var(--bone);opacity:.18}
+    .card-body { padding: 28px 28px 26px; }
+    .card-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 7px;
+    }
+    .card-role {
+      font-size: 0.68rem;
+      color: var(--text-faint);
+      letter-spacing: 0.04em;
+      margin-bottom: 15px;
+    }
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+    .card-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .metric {
+      background: var(--ember-dim);
+      border: 1px solid var(--ember-border);
+      border-radius: 8px;
+      padding: 9px 14px;
+    }
+    .metric-val {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.25rem;
+      color: var(--ember);
+      line-height: 1.1;
+      margin-bottom: 3px;
+    }
+    .metric-key {
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .card-no-metrics {
+      font-size: 0.74rem;
+      color: var(--text-faint);
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+    .cta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ember);
+      border: 1px solid var(--ember-border);
+      border-radius: 6px;
+      padding: 10px 18px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .card-cta:hover {
+      background: var(--ember-dim);
+      border-color: var(--ember);
+      transform: translateX(3px);
+    }
+    .cta-note {
+      font-size: 0.64rem;
+      color: var(--text-faint);
+      font-style: italic;
+    }
 
-/* Conrad */
-.p-conrad{background:linear-gradient(135deg,#2d1f2d,#3d2a3d,#2a1f35)}
-.p-conrad .kr{position:absolute;top:-12%;left:-5%;font-family:'Fraunces',serif;font-size:clamp(5rem,13vw,11rem);color:transparent;-webkit-text-stroke:1px rgba(237,228,210,.05);line-height:1;pointer-events:none}
-.p-conrad .seoul{position:absolute;top:30%;left:10%;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(2.2rem,5.5vw,4rem);color:var(--terra);line-height:1}
-.p-conrad .hl{position:absolute;left:0;right:0;height:1.5px;background:var(--char);opacity:.45}
-.p-conrad .hl1{top:42%}.p-conrad .hl2{top:66%}
-.p-conrad .sub{position:absolute;bottom:16%;left:10%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,210,.4)}
+    /* ── FLOAT ANIMATIONS (applied via JS after reveal) ─── */
+    @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+    @keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes float4 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+    @keyframes float5 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    @keyframes float6 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+    @keyframes float7 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    .floating-1 { animation: float1 7.2s ease-in-out infinite; }
+    .floating-2 { animation: float2 8.8s ease-in-out infinite 1.4s; }
+    .floating-3 { animation: float3 6.6s ease-in-out infinite 0.6s; }
+    .floating-4 { animation: float4 9.1s ease-in-out infinite 2.2s; }
+    .floating-5 { animation: float5 7.6s ease-in-out infinite 0.9s; }
+    .floating-6 { animation: float6 8.2s ease-in-out infinite 1.9s; }
+    .floating-7 { animation: float7 6.9s ease-in-out infinite 0.4s; }
 
-/* Palladium */
-.p-palladium{background:var(--ink)}
-.p-palladium .vt{position:absolute;left:14%;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,210,.22);white-space:nowrap}
-.p-palladium .ptitle{position:absolute;top:20%;left:26%;font-family:'Fraunces',serif;font-size:clamp(1.6rem,4vw,3rem);color:var(--bone);line-height:1.05;font-weight:400}
-.p-palladium .ptitle em{font-style:italic;color:var(--char);display:block}
-.pcirc1{position:absolute;top:7%;right:9%;width:clamp(44px,9vw,72px);height:clamp(44px,9vw,72px);border:2px solid var(--char);border-radius:50%}
-.pcirc2{position:absolute;bottom:11%;left:28%;width:clamp(26px,5vw,44px);height:clamp(26px,5vw,44px);background:var(--terra);border-radius:50%}
+    /* ── SCROLL REVEAL ──────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* Festive */
-.p-festive{background:linear-gradient(140deg,#4a1a0a,#6b2810,#3d1408)}
-.p-festive .stars{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(237,228,210,.8) 1px,transparent 1px),radial-gradient(circle,rgba(237,228,210,.4) 1px,transparent 1px),radial-gradient(circle,rgba(217,231,74,.6) 1px,transparent 1px);background-size:80px 80px,50px 50px,120px 120px;background-position:0 0,25px 25px,40px 40px;opacity:.35}
-.fht{position:absolute;font-family:'Fraunces',serif;font-size:clamp(.85rem,2.2vw,1.3rem);line-height:1.2}
-.fht1{top:15%;left:7%;color:var(--char);transform:rotate(-3deg)}
-.fht2{top:42%;left:18%;color:var(--bone);transform:rotate(2deg);opacity:.8}
-.fht3{top:62%;left:5%;color:var(--terra);transform:rotate(-1deg)}
-.fpill{position:absolute;bottom:13%;right:9%;border:1px solid rgba(237,228,210,.28);border-radius:20px;padding:.3rem .8rem;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,228,210,.45)}
+    /* ── CREDENTIALS MARQUEE ────────────────────────────── */
+    #credentials {
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .credentials-label {
+      text-align: center;
+      font-size: 0.67rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 32px;
+    }
+    .marquee-outer {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 38s linear infinite;
+    }
+    #credentials:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .m-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 32px;
+      white-space: nowrap;
+      font-size: 0.76rem;
+      letter-spacing: 0.07em;
+      color: var(--text-dim);
+    }
+    .m-item.award {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .m-sep { color: var(--ember); opacity: 0.5; }
 
-/* Dino */
-.p-dino{background:linear-gradient(160deg,#081410,#0f2010,#141e0f)}
-.p-dino .mtn{position:absolute;bottom:0;left:0;right:0;height:55%;background:var(--ink-2);clip-path:polygon(0 100%,0 58%,12% 38%,22% 54%,38% 14%,53% 48%,63% 28%,78% 54%,88% 34%,100% 50%,100% 100%)}
-.p-dino .dsun{position:absolute;top:11%;right:14%;width:clamp(36px,7vw,56px);height:clamp(36px,7vw,56px);background:var(--terra);border-radius:50%;box-shadow:0 0 28px rgba(196,105,74,.5),0 0 56px rgba(196,105,74,.2)}
-.p-dino .dtitle{position:absolute;top:20%;left:7%;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.4rem,3.5vw,2.6rem);color:var(--char);line-height:1.1}
+    /* ── ABOUT ──────────────────────────────────────────── */
+    #about {
+      padding: 100px 0 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .about-heading {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 400;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .about-copy {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.88;
+      margin-bottom: 18px;
+    }
+    .about-copy .accent { color: var(--ember); }
+    .roles-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 16px;
+      margin-top: 36px;
+    }
+    .roles-list { list-style: none; }
+    .roles-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--glass-border);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .roles-list li::before {
+      content: '\2014';
+      color: var(--ember);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .role-co { color: var(--text); font-weight: 400; }
+    .role-tenure {
+      display: block;
+      font-size: 0.62rem;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+      margin-top: 3px;
+    }
+    .verticals-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-top: 36px;
+      margin-bottom: 14px;
+    }
+    .verticals-text {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 2.1;
+    }
 
-/* iTeskul */
-.p-iteskul{background:var(--bone-2);background-image:linear-gradient(rgba(15,14,12,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(15,14,12,.06) 1px,transparent 1px);background-size:30px 30px}
-.p-iteskul .isq1{position:absolute;top:11%;right:17%;width:26px;height:26px;background:var(--terra)}
-.p-iteskul .isq2{position:absolute;top:19%;right:9%;width:18px;height:18px;background:var(--char)}
-.p-iteskul .isq3{position:absolute;bottom:17%;left:13%;width:22px;height:22px;background:var(--char);border-radius:50%}
-.p-iteskul .isq4{position:absolute;bottom:11%;left:21%;width:16px;height:16px;background:var(--terra);transform:rotate(45deg)}
-.p-iteskul .ititle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.8rem,4.5vw,3.2rem);color:var(--ink);white-space:nowrap;line-height:1}
+    /* ── CONTACT ────────────────────────────────────────── */
+    #contact {
+      padding: 80px 0 120px;
+      position: relative;
+      z-index: 2;
+    }
+    .contact-wrap { max-width: 620px; }
+    .contact-heading {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 400;
+      line-height: 1.22;
+      margin-bottom: 18px;
+    }
+    .contact-sub {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.85;
+      margin-bottom: 44px;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 22px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .contact-item:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .contact-type {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ember);
+      width: 58px;
+      flex-shrink: 0;
+    }
+    .contact-val {
+      font-size: 0.84rem;
+      color: var(--text);
+    }
 
-/* Learnovate */
-.p-learnovate{background:var(--plum)}
-.p-learnovate .lsq1{position:absolute;top:12%;right:16%;width:26px;height:26px;background:var(--char)}
-.p-learnovate .lsq2{position:absolute;top:20%;right:8%;width:18px;height:18px;background:var(--terra)}
-.p-learnovate .lsq3{position:absolute;bottom:16%;left:11%;width:22px;height:22px;background:var(--terra);border-radius:50%}
-.p-learnovate .lsq4{position:absolute;bottom:10%;left:19%;width:16px;height:16px;background:var(--char);transform:rotate(45deg)}
-.p-learnovate .ltitle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--bone);white-space:nowrap;line-height:1}
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--glass-border);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-copy, .footer-note {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      letter-spacing: 0.07em;
+    }
 
-/* F&B */
-.p-fb{background:var(--terra);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
-.corn{position:absolute;width:22px;height:22px}
-.corn-tl{top:13px;left:13px;border-top:2px solid var(--bone);border-left:2px solid var(--bone)}
-.corn-br{bottom:13px;right:13px;border-bottom:2px solid var(--bone);border-right:2px solid var(--bone)}
-.fb-price{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(2.2rem,6vw,4.5rem);color:var(--bone);line-height:1;text-align:center}
-.fb-sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,210,.7)}
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .work-grid  { grid-template-columns: 1fr; }
+      .card-span  { grid-column: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 44px; }
+    }
+    @media (max-width: 768px) {
+      .container    { padding: 0 20px; }
+      nav           { padding: 16px 20px; }
+      .nav-links li:nth-child(3) { display: none; }
+      .ghost-text   { display: none; }
+      .card-body    { padding: 20px 20px 18px; }
+      .marquee-track { animation-direction: reverse; }
+    }
+    @media (max-width: 520px) {
+      .nav-links    { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .card-metrics { gap: 8px; }
+      .metric       { padding: 7px 11px; }
+    }
 
-/* Bingo full-width ── */
-.bingo-full .proj-body{grid-template-columns:1fr;direction:ltr!important}
-.bingo-full .proj-copy{max-width:65ch}
-.bm-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:2.5rem;background:var(--ink);border-radius:16px;padding:2rem;border-left:4px solid var(--char)}
-.bm{display:flex;flex-direction:column;gap:.35rem}
-.bm-n{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.3rem,2.8vw,2rem);color:var(--char);line-height:1;letter-spacing:-.03em}
-.bm-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,228,210,.32)}
-.bingo-panel{margin-top:2rem;border-radius:16px;overflow:hidden;min-height:180px;position:relative;background:var(--ink)}
-
-/* ── Awards (dark) ── */
-.awards-s{background:var(--ink);color:var(--bone)}
-.awards-ticker{overflow:hidden;margin-bottom:4rem;border-bottom:1px solid rgba(255,255,255,.06)}
-.at-track{display:flex;align-items:center;gap:2.5rem;width:max-content;animation:marquee 18s linear infinite;padding:1.2rem 0;font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:var(--bone)}
-.at-track .star{color:var(--terra);font-style:normal;font-size:.85rem}
-.at-track .tier{color:var(--char);font-size:1rem}
-.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.aw-card{border:1px solid rgba(255,255,255,.07);padding:2rem;border-radius:16px;background:rgba(255,255,255,.025);transition:border-color .25s var(--ease),transform .25s var(--ease)}
-.aw-card:hover{border-color:var(--char);transform:translateY(-4px)}
-.aw-tier{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:1rem}
-.aw-name{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:400;color:var(--bone);margin-bottom:.6rem}
-.aw-desc{font-size:.88rem;color:rgba(237,228,210,.4);font-weight:300;line-height:1.55}
-
-/* ── Experience ── */
-.exp-s{background:var(--bone)}
-.exp-row{display:grid;grid-template-columns:150px 220px 1fr;gap:2rem;align-items:start;padding:2.5rem 0;border-bottom:1px solid rgba(15,14,12,.07);position:relative;transition:transform .25s var(--ease)}
-.exp-row::before{content:'';position:absolute;left:-1.4rem;top:50%;transform:translateY(-50%);width:8px;height:8px;background:var(--terra);border-radius:50%;opacity:0;transition:opacity .25s var(--ease)}
-.exp-row:hover{transform:translateX(1rem)}
-.exp-row:hover::before{opacity:1}
-.exp-date{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:.25rem}
-.exp-co{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:400;color:var(--ink);line-height:1.2;margin-bottom:.3rem}
-.exp-role{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.exp-desc{font-size:.95rem;font-weight:300;color:var(--muted-2);line-height:1.65}
-
-/* ── Contact (dark) ── */
-.contact-s{background:var(--ink);color:var(--bone)}
-.contact-h{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.5rem,7vw,6.5rem);line-height:1;letter-spacing:-.03em;margin-bottom:4rem}
-.contact-h .cc{font-style:italic;color:var(--char)}
-.contact-h .ct{font-style:italic;color:var(--terra)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.contact-links{display:flex;flex-direction:column;gap:1.2rem}
-.cl-row{display:flex;align-items:baseline;gap:1rem;font-size:1rem;color:rgba(237,228,210,.65);font-weight:300;transition:color .25s var(--ease)}
-.cl-row:hover{color:var(--bone)}
-.cl-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,210,.28);min-width:64px;flex-shrink:0}
-.cv-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.5rem;background:var(--char);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:.9rem 1.6rem;border-radius:4px;transition:background .25s var(--ease),transform .25s var(--ease)}
-.cv-btn:hover{background:var(--char-2);transform:translateY(-2px)}
-.open-to-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,228,210,.28);margin-bottom:.8rem;display:block}
-.open-to-text{font-family:'Fraunces',serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(237,228,210,.65);font-weight:300;line-height:1.6}
-.open-to-text em{color:var(--char);font-style:italic}
-
-/* ── Footer ── */
-footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.05);padding:1.8rem 6vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(237,228,210,.22)}
-.fdot{color:var(--char);animation:pulse 2.4s ease-in-out infinite}
-
-/* ── Fade general ── */
-.fi{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.fi.vis{opacity:1;transform:translateY(0)}
-
-/* ── Responsive ── */
-@media(max-width:768px){
-  .nav-links{display:none}
-  .hero{padding-bottom:5rem}
-  .about-grid,.contact-grid{grid-template-columns:1fr}
-  .about-grid{gap:2.5rem}
-  .stats-row{grid-template-columns:1fr 1fr}
-  .proj-body,.proj-article:nth-child(even) .proj-body{grid-template-columns:1fr;direction:ltr}
-  .bm-grid{grid-template-columns:repeat(3,1fr)}
-  .awards-grid{grid-template-columns:1fr 1fr}
-  .exp-row{grid-template-columns:1fr;gap:.4rem}
-  .exp-date{padding-top:0}
-  section{padding:5rem 5vw}
-}
-
-/* ── Reduced motion ── */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .ghost-1,.ghost-2,.shape{display:none}
-}
-</style>
+    /* ── REDUCED MOTION ─────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      #blob-ember, #blob-cool, .ghost-text { display: none !important; }
+      .reveal     { opacity: 1; transform: none; }
+      .proof-line { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
 
-<div id="cdot"></div>
-<div id="cring"></div>
+  <!-- Custom cursor -->
+  <div id="cursor-dot"></div>
 
-<nav class="nav">
-  <div class="nav-brand">
-    <span>DS / Marketing</span>
-    <span class="nav-pulse" aria-hidden="true"></span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- Cursor blobs -->
+  <div class="blob" id="blob-ember"></div>
+  <div class="blob" id="blob-cool"></div>
 
-<!-- HERO -->
-<section class="hero" aria-labelledby="hname">
-  <div class="ghost ghost-1" id="gm" aria-hidden="true">Marketer</div>
-  <div class="ghost ghost-2" id="gs" aria-hidden="true">Storyteller</div>
-  <div class="shape sh-circle" aria-hidden="true"></div>
-  <div class="shape sh-square" aria-hidden="true"></div>
-  <div class="shape sh-line" aria-hidden="true"></div>
-  <div class="shape sh-ring" aria-hidden="true"></div>
-  <div class="hero-content">
-    <div class="hero-label">Marketing · Brand · Account Management</div>
-    <h1 class="hero-name" id="hname"><span class="first">Dhruv</span><br><span class="last">Sthapak</span></h1>
-    <p class="hero-tagline">I build brands worth believing in — and the campaigns, accounts, and growth systems that scale them. Seven years deep and still allergic to boring.</p>
-    <div class="hero-bottom">
-      <div class="scroll-ind" aria-hidden="true"><div class="scroll-line"></div><span>Scroll</span></div>
-      <div class="avail"><span class="avail-dot" aria-hidden="true"></span><span>Open to work · Pune, India</span></div>
-    </div>
-  </div>
-</section>
+  <!-- BG structure -->
+  <div id="bg-vignette"></div>
+  <div class="bloom" id="bloom-a"></div>
+  <div class="bloom" id="bloom-b"></div>
+  <div class="bloom" id="bloom-c"></div>
 
-<!-- MARQUEE -->
-<div class="strip" aria-hidden="true">
-  <div class="strip-track">
-    <em>Brand storytelling</em><span class="dm">◆</span><em>Integrated marketing</em><span class="dm">◆</span><em>Key account management</em><span class="dm">◆</span><em>D2C performance</em><span class="dm">◆</span><em>Influencer &amp; celebrity</em><span class="dm">◆</span><em>AI-led campaigns</em><span class="dm">◆</span><em>Hospitality marketing</em><span class="dm">◆</span><em>Brand strategy</em><span class="dm">◆</span><em>Brand storytelling</em><span class="dm">◆</span><em>Integrated marketing</em><span class="dm">◆</span><em>Key account management</em><span class="dm">◆</span><em>D2C performance</em><span class="dm">◆</span><em>Influencer &amp; celebrity</em><span class="dm">◆</span><em>AI-led campaigns</em><span class="dm">◆</span><em>Hospitality marketing</em><span class="dm">◆</span><em>Brand strategy</em><span class="dm">◆</span>
-  </div>
-</div>
+  <!-- ── NAV ──────────────────────────────────────────── -->
+  <nav>
+    <a href="#hero" class="nav-logo">Dhruv Sthapak</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- ABOUT -->
-<section id="about" class="about-s dk">
-  <span class="sl">001 — About</span>
-  <div class="about-grid fi">
-    <div>
-      <h2 class="about-h">Seven years.<br>Five industries.<br><em>One insistence on craft.</em></h2>
-      <blockquote class="about-q">"Brands don't grow because someone optimised a CTR. They grow because someone made people care."</blockquote>
-    </div>
-    <div class="about-body">
-      <p>Based in Pune and originally from Kareli, Madhya Pradesh, I've spent <span class="hi">7+ years</span> building campaigns that sit somewhere between brand storytelling and performance pressure.</p>
-      <p>From Marriott hospitality launches to AI-powered FMCG campaigns, I've handled account growth, lifecycle marketing, influencer ecosystems, and integrated launch strategy across hospitality, FMCG, D2C, retail, and EdTech.</p>
-      <p>I've worked across agency and client-side roles, institutional ecosystems spanning IITs, NITs, and IIITs — and picked up a few shiny things along the way: DIGIES Gold, Foxglove Gold, Trendies Gold, Digixx Silver.</p>
-    </div>
-  </div>
-  <div class="stats-row fi">
-    <div><span class="stat-n">7+</span><span class="stat-l">Years across five industries</span></div>
-    <div><span class="stat-n">50.7M</span><span class="stat-l">Campaign reach — ITC Bingo</span></div>
-    <div><span class="stat-n">5.5M</span><span class="stat-l">Eyes captured — Westin Pune</span></div>
-    <div><span class="stat-n">$13</span><span class="stat-l">Barukas CPA (down from $40)</span></div>
-  </div>
-</section>
-
-<!-- WORK -->
-<section id="work" class="work-s" style="padding-left:0;padding-right:0;padding-top:6rem">
-  <span class="sl" style="padding:0 6vw">002 — Selected Work</span>
-
-  <!-- 01 Westin -->
-  <article class="proj-article" aria-labelledby="p1">
-    <div class="proj-num-row"><span>— 01</span><span>Hospitality · Westin Pune · 2024</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p1">How Westin Pune<br><em>captured 5.5M eyes</em></h2>
-        <p class="proj-desc">Westin Pune wasn't short on glamour. It was short on people knowing about it. We built a multi-channel seasonal engine around staycations, Chef's Table experiences, Marriott Bonvoy moments, and festive F&amp;B. Christmas and New Year timing did the rest.</p>
-        <div class="metrics-row"><div class="mc"><span class="mn">5.5M</span><span class="ml">Total reach</span></div><div class="mc"><span class="mn">5 ★</span><span class="ml">Seasonal campaigns</span></div></div>
-        <a class="proj-link" href="https://www.knowledgeunits.com/projects/from-insights-to-impact-how-the-westin-pune-captured-5-5-million-eyes" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-westin" aria-hidden="true">
-        <div class="wc wc1"><div class="wc1-n">5.5M<em> Reach</em></div><div class="wc1-l">Westin Pune · 2024</div></div>
-        <div class="wc wc2"><div class="wc2-t">Eyes, captured.</div></div>
-        <span class="pb">Hospitality · Brand</span><span class="pc">01 / 11</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 02 Barukas -->
-  <article class="proj-article" aria-labelledby="p2">
-    <div class="proj-num-row"><span>— 02</span><span>D2C · Barukas USA · 2024</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p2">Barukas had nuts.<br><em>They didn't have a funnel.</em></h2>
-        <p class="proj-desc">We rebuilt one from the ground up — creative simplification, influencer-driven content, Meta restructuring, subscription-first lead gen. CPA went from $40 to $13. Sales came back to life.</p>
-        <div class="metrics-row"><div class="mc"><span class="mn">$40→$13</span><span class="ml">CPA reduction</span></div><div class="mc"><span class="mn">68%</span><span class="ml">Cost drop</span></div></div>
-        <a class="proj-link" href="https://www.knowledgeunits.com/projects/going-nuts-for-success-how-we-reduced-barukas-cpa-from-40-to-13" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-barukas" aria-hidden="true">
-        <div class="old">$40</div><div class="arr">↓</div><div class="nw">$13</div><div class="cl">CPA, finally.</div>
-        <span class="pb">D2C · Performance</span><span class="pc">02 / 11</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 03 Bingo FULL WIDTH -->
-  <article class="proj-article bingo-full" aria-labelledby="p3">
-    <div class="proj-num-row"><span>— 03</span><span>FMCG · ITC Bingo · 2023</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p3">Bingo! Mad Angles<br><em>AI Meme Gallery</em></h2>
-        <p class="proj-desc">We asked the internet what really happened in the Bingo TVC universe. Then we turned audience theories into AI-generated memes, music, animation, and rap storytelling using Midjourney, Runway, ChatGPT, Uberduck, and Musicfy. Chaos, but strategic chaos — and six numbers that don't lie.</p>
-        <a class="proj-link" href="https://www.pixelfox.agency/our-work/itc-bingo-mad-angles-ai-meme-gallery/" target="_blank" rel="noopener">View case study ↗</a>
-        <div class="bm-grid">
-          <div class="bm"><span class="bm-n">50.7M</span><span class="bm-l">Total reach</span></div>
-          <div class="bm"><span class="bm-n">51.9M</span><span class="bm-l">Impressions</span></div>
-          <div class="bm"><span class="bm-n">5.6M</span><span class="bm-l">Engagement</span></div>
-          <div class="bm"><span class="bm-n">5,346</span><span class="bm-l">UGC entries</span></div>
-          <div class="bm"><span class="bm-n">31.6M</span><span class="bm-l">Video views</span></div>
-          <div class="bm"><span class="bm-n">₹17.4L</span><span class="bm-l">Earned media</span></div>
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section id="hero">
+    <span class="ghost-text" id="ghost-proof">Proof</span>
+    <span class="ghost-text" id="ghost-pitch">not pitch.</span>
+    <div class="container">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Content &amp; Brand Marketer</p>
+        <h1 class="hero-name">Dhruv Sthapak</h1>
+        <p class="hero-sub">Campaigns that live where people look.</p>
+        <p class="hero-promise">
+          Real work, real links. Every project below points to the original
+          published page. <em>If it ran, it's here.</em>
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-ember">See the work</a>
+          <a href="mailto:sthapakdhruv@gmail.com" class="hero-link">sthapakdhruv@gmail.com</a>
+          <a href="https://linkedin.com/in/dhruvsthapak" target="_blank" rel="noopener noreferrer" class="hero-link">LinkedIn &#8599;</a>
         </div>
       </div>
     </div>
-    <div class="bingo-panel p-bingo">
-      <div class="bf bf1">Uss raat kya hua tha?</div>
-      <div class="bf bf2">UGC entry #2,847</div>
-      <div class="bf bf3">AI-generated meme</div>
-      <div class="bf bf4">Midjourney → Runway</div>
-      <div class="bf bf5">Rap video output</div>
-      <span class="pb">FMCG · AI + UGC</span><span class="pc">03 / 11</span>
+    <div class="scroll-hint">
+      <div class="scroll-hint-line"></div>
+      scroll
     </div>
-  </article>
+  </section>
 
-  <!-- 04 Phoenix Citadel -->
-  <article class="proj-article" aria-labelledby="p4">
-    <div class="proj-num-row"><span>— 04</span><span>Retail · Phoenix Malls · 2023</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p4">Not a mall.<br><em>The mall of Madhya Pradesh.</em></h2>
-        <p class="proj-desc">We positioned Phoenix Citadel as Central India's landmark retail destination and engineered the social momentum to match. 10,000 followers in 45 days. The region noticed.</p>
-        <div class="metrics-row"><div class="mc"><span class="mn">2.9M+</span><span class="ml">Launch reach</span></div><div class="mc"><span class="mn">90K</span><span class="ml">Facebook</span></div><div class="mc"><span class="mn">29K</span><span class="ml">Instagram</span></div><div class="mc"><span class="mn">10K</span><span class="ml">Followers in 45 days</span></div></div>
-        <a class="proj-link" href="https://www.pixelfox.agency/our-work/phoenix-citadel-mall-launch-campaign/" target="_blank" rel="noopener">View case study ↗</a>
+  <!-- ── PROOF STRIP ───────────────────────────────────── -->
+  <section id="proof-strip">
+    <div class="container">
+      <span class="proof-line">I don't describe campaigns.</span>
+      <span class="proof-line">I show where they <span class="accent">live.</span></span>
+      <span class="proof-line">Every project below links to the original <span class="accent">published</span> work. That's the only <span class="accent">proof</span> that matters.</span>
+    </div>
+  </section>
+
+  <!-- ── WORK ─────────────────────────────────────────── -->
+  <section id="work">
+    <div class="container">
+      <p class="section-eyebrow">Selected Work</p>
+      <div class="work-grid">
+
+        <!-- 1 · ITC Bingo — headliner, full-width -->
+        <article class="card glass reveal card-span" data-float="floating-1">
+          <div class="card-thumb t-bingo">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">ITC Bingo</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">FMCG &middot; Influencer &middot; UGC</p>
+            <h2 class="card-title">ITC Bingo Mad Angles &mdash; #AngleTohHaiMast</h2>
+            <p class="card-role">Part of the marketing team at Pixelfox</p>
+            <p class="card-desc">A creator-led UGC engine that turned a snack relaunch into a cultural moment. We activated 180+ influencers, built a challenge mechanic, and let the internet do what the internet does.</p>
+            <div class="card-metrics">
+              <div class="metric">
+                <div class="metric-val">50.7M</div>
+                <div class="metric-key">Total Reach</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">51.9M</div>
+                <div class="metric-key">Impressions</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">5.6M</div>
+                <div class="metric-key">Engagement</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">5,346</div>
+                <div class="metric-key">UGC Entries</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">31.6M</div>
+                <div class="metric-key">Video Views</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">&#8377;17.4L</div>
+                <div class="metric-key">Earned Media Value</div>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a href="https://pixelfox.agency/work/itc-bingo" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+              <span class="cta-note">Original campaign page on pixelfox.agency</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 · Westin Pune -->
+        <article class="card glass reveal" data-float="floating-2">
+          <div class="card-thumb t-westin">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">Westin Pune</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Hospitality &middot; Social &middot; Content</p>
+            <h2 class="card-title">The Westin Pune &mdash; Social Content Strategy</h2>
+            <p class="card-role">Part of the marketing team at Pixelfox</p>
+            <p class="card-desc">Repositioned the brand's social presence from broadcast to conversation. Built a content calendar grounded in wellness, food, and the distinctive Westin sensibility.</p>
+            <div class="card-metrics">
+              <div class="metric">
+                <div class="metric-val">5.5M</div>
+                <div class="metric-key">Total Reach</div>
+              </div>
+            </div>
+            <a href="https://pixelfox.agency/work/westin-pune" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+          </div>
+        </article>
+
+        <!-- 3 · Barukas -->
+        <article class="card glass reveal" data-float="floating-3">
+          <div class="card-thumb t-barukas">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">Barukas</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">D2C &middot; Paid Social &middot; Performance</p>
+            <h2 class="card-title">Barukas &mdash; Performance Marketing</h2>
+            <p class="card-role">Part of the marketing team at Knowledge Units</p>
+            <p class="card-desc">Restructured the paid social funnel for a D2C superfood brand targeting the US market. Reduced CPA through audience segmentation, creative testing, and landing page alignment.</p>
+            <div class="card-metrics">
+              <div class="metric">
+                <div class="metric-val">$40 &#8594; $13</div>
+                <div class="metric-key">CPA Reduction</div>
+              </div>
+            </div>
+            <a href="https://knowledgeunits.com/work/barukas" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+          </div>
+        </article>
+
+        <!-- 4 · Phoenix Citadel — headliner, full-width -->
+        <article class="card glass reveal card-span" data-float="floating-4">
+          <div class="card-thumb t-citadel">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">Phoenix Citadel</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Retail &middot; Launch &middot; Community</p>
+            <h2 class="card-title">Phoenix Citadel Indore &mdash; Launch Campaign</h2>
+            <p class="card-role">Part of the marketing team at Pixelfox</p>
+            <p class="card-desc">Drove the digital launch for a new mixed-use development in Indore. Built brand communities from zero, ran pre-launch awareness content, and sustained momentum through opening week.</p>
+            <div class="card-metrics">
+              <div class="metric">
+                <div class="metric-val">2.9M+</div>
+                <div class="metric-key">Launch Reach</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">90K</div>
+                <div class="metric-key">Facebook Followers</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">29K</div>
+                <div class="metric-key">Instagram Followers</div>
+              </div>
+              <div class="metric">
+                <div class="metric-val">10K</div>
+                <div class="metric-key">Followers in 45 Days</div>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a href="https://pixelfox.agency/work/phoenix-citadel" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+              <span class="cta-note">Original campaign page on pixelfox.agency</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 · Conrad Pune -->
+        <article class="card glass reveal" data-float="floating-5">
+          <div class="card-thumb t-conrad">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">Conrad Pune</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Luxury Hospitality &middot; Brand &middot; Content</p>
+            <h2 class="card-title">Conrad Pune &mdash; Brand Content</h2>
+            <p class="card-role">Part of the marketing team at Pixelfox</p>
+            <p class="card-desc">Developed ongoing brand content for one of Pune's flagship luxury properties. Covered F&amp;B activations, seasonal campaigns, and positioning within the Conrad portfolio.</p>
+            <p class="card-no-metrics">Campaign details available on the live page.</p>
+            <a href="https://pixelfox.agency/work/conrad-pune" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+          </div>
+        </article>
+
+        <!-- 6 · Phoenix Palladium -->
+        <article class="card glass reveal" data-float="floating-6">
+          <div class="card-thumb t-palladium">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">Palladium</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">Retail &middot; Content &middot; Brand</p>
+            <h2 class="card-title">Phoenix Palladium &mdash; Content Marketing</h2>
+            <p class="card-role">Part of the marketing team at Pixelfox</p>
+            <p class="card-desc">Created content across formats for the premium retail destination. Aligned execution with the broader Phoenix Mills brand framework while holding Palladium's distinct premium tone.</p>
+            <p class="card-no-metrics">Campaign details available on the live page.</p>
+            <a href="https://pixelfox.agency/work/phoenix-palladium" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+          </div>
+        </article>
+
+        <!-- 7 · Scaler USA -->
+        <article class="card glass reveal" data-float="floating-7">
+          <div class="card-thumb t-scaler">
+            <div class="card-thumb-inner">
+              <span class="thumb-label">Scaler</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-tag">EdTech &middot; Content &middot; US Market</p>
+            <h2 class="card-title">Scaler &mdash; US Market Content</h2>
+            <p class="card-role">Part of the marketing team at Knowledge Units</p>
+            <p class="card-desc">Produced content strategy and execution for Scaler's expansion into the US edtech market. Adapted brand voice for a new audience segment and supported launch content across channels.</p>
+            <p class="card-no-metrics">Campaign details available on the live page.</p>
+            <a href="https://knowledgeunits.com/work/scaler" target="_blank" rel="noopener noreferrer" class="card-cta">View it live &#8599;</a>
+          </div>
+        </article>
+
       </div>
-      <div class="panel p-citadel" aria-hidden="true">
-        <div class="clabel">Central India's<br>largest mall.</div>
-        <div class="cwindows">
-          <span class="cw"></span><span class="cw lc"></span><span class="cw"></span><span class="cw lt"></span><span class="cw"></span><span class="cw"></span><span class="cw lc"></span>
-          <span class="cw lb"></span><span class="cw"></span><span class="cw"></span><span class="cw"></span><span class="cw lc"></span><span class="cw"></span><span class="cw"></span>
-          <span class="cw"></span><span class="cw"></span><span class="cw lt"></span><span class="cw"></span><span class="cw"></span><span class="cw lc"></span><span class="cw"></span>
-          <span class="cw lc"></span><span class="cw"></span><span class="cw"></span><span class="cw lb"></span><span class="cw"></span><span class="cw"></span><span class="cw lt"></span>
-          <span class="cw"></span><span class="cw lt"></span><span class="cw"></span><span class="cw"></span><span class="cw lc"></span><span class="cw"></span><span class="cw"></span>
-          <span class="cw lb"></span><span class="cw"></span><span class="cw lc"></span><span class="cw"></span><span class="cw"></span><span class="cw lt"></span><span class="cw"></span>
+    </div>
+  </section>
+
+  <!-- ── CREDENTIALS MARQUEE ──────────────────────────── -->
+  <section id="credentials">
+    <p class="credentials-label">Brands &amp; Recognition</p>
+    <div class="marquee-outer">
+      <div class="marquee-track">
+        <span class="m-item award">Best UGC Campaign 2024<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <span class="m-item">ITC Bingo<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">The Westin Pune<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Conrad Pune<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Phoenix Citadel<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Phoenix Palladium<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Barukas<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Scaler<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item award">50.7M reach on a single campaign<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <span class="m-item">Pixelfox Agency<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Knowledge Units<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item award">5,346 UGC entries. Organic.<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <span class="m-item">FMCG &middot; Hospitality &middot; D2C &middot; Retail &middot; EdTech<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item award">&#8377;17.4L Earned Media Value<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <!-- duplicate for seamless loop -->
+        <span class="m-item award">Best UGC Campaign 2024<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <span class="m-item">ITC Bingo<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">The Westin Pune<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Conrad Pune<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Phoenix Citadel<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Phoenix Palladium<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Barukas<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Scaler<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item award">50.7M reach on a single campaign<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <span class="m-item">Pixelfox Agency<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item">Knowledge Units<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item award">5,346 UGC entries. Organic.<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+        <span class="m-item">FMCG &middot; Hospitality &middot; D2C &middot; Retail &middot; EdTech<span class="m-sep">&nbsp;&middot;&nbsp;</span></span>
+        <span class="m-item award">&#8377;17.4L Earned Media Value<span class="m-sep">&nbsp;&#10022;&nbsp;</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <h2 class="about-heading">The person behind the campaigns.</h2>
+          <p class="about-copy">
+            I'm a content and brand marketer who's worked across agencies and in-house teams on campaigns spanning FMCG, hospitality, D2C, retail, and edtech.
+          </p>
+          <p class="about-copy">
+            I've been part of the team at <span class="accent">Pixelfox Agency</span> and <span class="accent">Knowledge Units</span>, working on brands that range from ITC to The Westin to a superfood startup targeting the American market.
+          </p>
+          <p class="about-copy">
+            Most recently, I completed the <span class="accent">PHN.LMS</span> program, a structured learning track in brand and performance marketing. That's the credential I'd point to if you asked what I've been building toward.
+          </p>
         </div>
-        <span class="pb">Retail · Launch</span><span class="pc">04 / 11</span>
+        <div class="reveal">
+          <p class="roles-label">Experience</p>
+          <ul class="roles-list">
+            <li>
+              <div>
+                <span class="role-co">Pixelfox Agency</span>
+                <span class="role-tenure">Content &amp; Brand Marketing</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="role-co">Knowledge Units</span>
+                <span class="role-tenure">Content Strategy &amp; Performance</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="role-co">PHN.LMS</span>
+                <span class="role-tenure">Brand &amp; Performance Marketing Program</span>
+              </div>
+            </li>
+          </ul>
+          <p class="verticals-label">Verticals</p>
+          <p class="verticals-text">
+            FMCG &nbsp;&middot;&nbsp; Luxury Hospitality &nbsp;&middot;&nbsp; D2C<br>
+            Retail &nbsp;&middot;&nbsp; EdTech
+          </p>
+        </div>
       </div>
     </div>
-  </article>
+  </section>
 
-  <!-- 05 Conrad -->
-  <article class="proj-article" aria-labelledby="p5">
-    <div class="proj-num-row"><span>— 05</span><span>Hospitality · Conrad Bangalore · 2023</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p5">Seoul,<br><em>at Conrad Bangalore</em></h2>
-        <p class="proj-desc">An immersive Korean culture campaign for Conrad Bangalore's Seoul-themed dining experience. Social storytelling, influencer-led content, and lifestyle photography blending Korean aesthetics with Bangalore's cosmopolitan energy.</p>
-        <a class="proj-link" href="https://www.pixelfox.agency/our-work/conrad-bangalore-seoul-campaign/" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-conrad" aria-hidden="true">
-        <div class="kr">서울</div>
-        <div class="seoul">Seoul,</div>
-        <div class="hl hl1"></div><div class="hl hl2"></div>
-        <div class="sub">At Conrad Bangalore</div>
-        <span class="pb">Hospitality · Social</span><span class="pc">05 / 11</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 06 Palladium -->
-  <article class="proj-article" aria-labelledby="p6">
-    <div class="proj-num-row"><span>— 06</span><span>Retail · Phoenix Palladium · 2023</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p6">Palladium,<br><em>relaunched.</em></h2>
-        <p class="proj-desc">Premium mall repositioning for Phoenix Palladium. Social-first luxury narrative, curated influencer content, and a brand voice that matched the address. Reestablished Palladium as Mumbai's definitive upscale retail destination.</p>
-        <a class="proj-link" href="https://www.pixelfox.agency/our-work/phoenix-palladium-mall-launch-campaign/" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-palladium" aria-hidden="true">
-        <div class="vt">Luxury Retail / Mumbai</div>
-        <div class="ptitle">Palla-<em>dium.</em></div>
-        <div class="pcirc1"></div><div class="pcirc2"></div>
-        <span class="pb" style="background:rgba(237,228,210,.08)">Retail · Brand</span><span class="pc">06 / 11</span>
+  <!-- ── CONTACT ───────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-wrap reveal">
+        <h2 class="contact-heading">Let's make something that lives somewhere.</h2>
+        <p class="contact-sub">
+          Open to brand, content, and performance roles. If you're building something that needs proof, not pitch, reach out.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:sthapakdhruv@gmail.com" class="contact-item glass">
+            <span class="contact-type">Email</span>
+            <span class="contact-val">sthapakdhruv@gmail.com</span>
+          </a>
+          <a href="https://linkedin.com/in/dhruvsthapak" target="_blank" rel="noopener noreferrer" class="contact-item glass">
+            <span class="contact-type">LinkedIn</span>
+            <span class="contact-val">linkedin.com/in/dhruvsthapak</span>
+          </a>
+        </div>
       </div>
     </div>
-  </article>
+  </section>
 
-  <!-- 07 Festive -->
-  <article class="proj-article" aria-labelledby="p7">
-    <div class="proj-num-row"><span>— 07</span><span>Brand films · Phoenix Mills · 2022–23</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p7">#ShineLikeYou.<br><em>#BondOfPhoenix.</em></h2>
-        <p class="proj-desc">Three connected festive campaigns across Diwali, wedding season, and New Year for Phoenix Mills. Celebrity-led brand films, high-reach influencer cascades, and integrated ATL/digital storytelling built around occasion-specific emotional hooks.</p>
-        <a class="proj-link" href="https://www.pixelfox.agency/our-work/phoenix-festive-campaigns/" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-festive" aria-hidden="true">
-        <div class="stars" aria-hidden="true"></div>
-        <div class="fht fht1">#ShineLikeYou</div>
-        <div class="fht fht2">#BondOfPhoenix</div>
-        <div class="fht fht3">#ProsperWithGlam</div>
-        <div class="fpill">Brand films · Celebrity-led</div>
-        <span class="pb">Seasonal · Brand films</span><span class="pc">07 / 11</span>
+  <!-- ── FOOTER ────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">&copy; 2026 Dhruv Sthapak</span>
+        <span class="footer-note">Built with proof, not pitch.</span>
       </div>
     </div>
-  </article>
+  </footer>
 
-  <!-- 08 Dinosaur World -->
-  <article class="proj-article" aria-labelledby="p8">
-    <div class="proj-num-row"><span>— 08</span><span>Events · Dinosaur World · Indore · 2023</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p8">When Indore<br><em>turned Jurassic</em></h2>
-        <p class="proj-desc">Social launch strategy and integrated campaign for India's immersive dinosaur experience. CGI teasers, influencer-seeded Reels, and lead-gen infrastructure drove footfall before opening day. Indore hadn't seen anything like it.</p>
-        <div class="metrics-row"><div class="mc"><span class="mn">CGI</span><span class="ml">Teasers</span></div><div class="mc"><span class="mn">Reels</span><span class="ml">Influencer seeding</span></div><div class="mc"><span class="mn">Lead-gen</span><span class="ml">Pre-launch funnel</span></div></div>
-      </div>
-      <div class="panel p-dino" aria-hidden="true">
-        <div class="mtn"></div>
-        <div class="dsun"></div>
-        <div class="dtitle">Jurassic,<br>in Indore.</div>
-        <span class="pb">Events · Experiential</span><span class="pc">08 / 11</span>
-      </div>
-    </div>
-  </article>
+  <script>
+    (function () {
+      // ── CURSOR ──────────────────────────────────────────
+      var dot = document.getElementById('cursor-dot');
+      document.addEventListener('mousemove', function (e) {
+        dot.style.left = e.clientX + 'px';
+        dot.style.top  = e.clientY + 'px';
+      });
+      document.querySelectorAll('a, button').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { dot.classList.add('on-link'); });
+        el.addEventListener('mouseleave', function () { dot.classList.remove('on-link'); });
+      });
 
-  <!-- 09 iTeskul -->
-  <article class="proj-article" aria-labelledby="p9">
-    <div class="proj-num-row"><span>— 09</span><span>EdTech · iTeskul · 2022</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p9"><em>iTeskul,</em><br>built for the feed</h2>
-        <p class="proj-desc">Lead generation architecture and enrollment funnel rebuilding for iTeskul's digital marketing programs. Performance-first content, retargeting overhaul, and social proof frameworks that converted browsers into enrolled learners.</p>
-        <a class="proj-link" href="https://brandaura.in/case-studies/iteskul/" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-iteskul" aria-hidden="true">
-        <div class="isq1"></div><div class="isq2"></div><div class="isq3"></div><div class="isq4"></div>
-        <div class="ititle">iTeskul.</div>
-        <span class="pb">EdTech · Performance</span><span class="pc">09 / 11</span>
-      </div>
-    </div>
-  </article>
+      // ── BLOBS ───────────────────────────────────────────
+      var blobEmber = document.getElementById('blob-ember');
+      var blobCool  = document.getElementById('blob-cool');
+      if (window.innerWidth >= 768) {
+        var tx = window.innerWidth / 2,  ty = window.innerHeight / 2;
+        var ex = tx, ey = ty, cx = tx, cy = ty;
+        document.addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; });
+        (function tick() {
+          ex += (tx - ex) * 0.05;
+          ey += (ty - ey) * 0.05;
+          cx += (tx - cx) * 0.03;
+          cy += (ty - cy) * 0.03;
+          blobEmber.style.left = ex + 'px';
+          blobEmber.style.top  = ey + 'px';
+          blobCool.style.left  = cx + 'px';
+          blobCool.style.top   = cy + 'px';
+          requestAnimationFrame(tick);
+        })();
+      } else {
+        blobEmber.style.display = 'none';
+        blobCool.style.display  = 'none';
+        dot.style.display       = 'none';
+      }
 
-  <!-- 10 Learnovate -->
-  <article class="proj-article" aria-labelledby="p10">
-    <div class="proj-num-row"><span>— 10</span><span>EdTech · Learnovate · 2022</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p10"><em>Learnovate,</em><br>scaled</h2>
-        <p class="proj-desc">Brand positioning and digital growth infrastructure for Learnovate's upskilling platform. Lifecycle marketing sequences, multilingual acquisition campaigns, and a content engine built to generate consistent, qualified inbound at scale.</p>
-        <a class="proj-link" href="https://brandaura.in/case-studies/learnovate/" target="_blank" rel="noopener">View case study ↗</a>
-      </div>
-      <div class="panel p-learnovate" aria-hidden="true">
-        <div class="lsq1"></div><div class="lsq2"></div><div class="lsq3"></div><div class="lsq4"></div>
-        <div class="ltitle">Learnovate.</div>
-        <span class="pb" style="background:rgba(237,228,210,.08)">EdTech · Brand</span><span class="pc">10 / 11</span>
-      </div>
-    </div>
-  </article>
+      // ── PARALLAX ────────────────────────────────────────
+      var bloomA     = document.getElementById('bloom-a');
+      var bloomB     = document.getElementById('bloom-b');
+      var bloomC     = document.getElementById('bloom-c');
+      var ghostProof = document.getElementById('ghost-proof');
+      var ghostPitch = document.getElementById('ghost-pitch');
+      window.addEventListener('scroll', function () {
+        var y = window.scrollY;
+        bloomA.style.transform = 'translateY(' + (y * 0.10) + 'px)';
+        bloomB.style.transform = 'translateY(' + (-y * 0.07) + 'px)';
+        bloomC.style.transform = 'translateX(-50%) translateY(' + (y * 0.05) + 'px)';
+        if (ghostProof) ghostProof.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+        if (ghostPitch) ghostPitch.style.transform = 'translateY(' + (-y * 0.16) + 'px)';
+      }, { passive: true });
 
-  <!-- 11 F&B Pune -->
-  <article class="proj-article" aria-labelledby="p11">
-    <div class="proj-num-row"><span>— 11</span><span>F&amp;B · Pune · 2019–2021</span></div>
-    <div class="proj-body">
-      <div class="proj-copy">
-        <h2 class="proj-title" id="p11">How I turned Pune's<br><em>F&amp;B scene upside down</em></h2>
-        <p class="proj-desc">Five local hospitality and F&amp;B brands. Weekly social content, hyperlocal influencer tie-ups, and a campaign that made beer at ₹11 feel like a cultural event. #MRPMonday built the kind of earned buzz that ad spend can't buy.</p>
-        <div class="metrics-row"><div class="mc"><span class="mn">5+</span><span class="ml">F&amp;B clients</span></div><div class="mc"><span class="mn">₹11</span><span class="ml">Beer · #MRPMonday</span></div></div>
-      </div>
-      <div class="panel p-fb" aria-hidden="true">
-        <div class="corn corn-tl"></div>
-        <div class="corn corn-br"></div>
-        <div class="fb-price">Beer @ ₹11</div>
-        <div class="fb-sub">#MRPMonday · Pune</div>
-        <span class="pb" style="background:rgba(237,228,210,.2);color:var(--bone)">F&amp;B · Pune</span>
-        <span class="pc" style="color:rgba(237,228,210,.45)">11 / 11</span>
-      </div>
-    </div>
-  </article>
+      // ── SCROLL REVEAL ────────────────────────────────────
+      var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.classList.add('visible');
+          var floatClass = el.dataset.float;
+          if (floatClass) {
+            setTimeout(function () { el.classList.add(floatClass); }, 700);
+          }
+          revealObs.unobserve(el);
+        });
+      }, { threshold: 0.10 });
+      document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
 
-</section>
-
-<!-- CLIENTS STRIP -->
-<div class="clients-strip" aria-hidden="true">
-  <div class="strip">
-    <div class="strip-track">
-      <em>Marriott International</em><span class="dm">◆</span><em>ITC Bingo</em><span class="dm">◆</span><em>Phoenix Mills</em><span class="dm">◆</span><em>Conrad Bangalore</em><span class="dm">◆</span><em>Westin Pune</em><span class="dm">◆</span><em>Barukas USA</em><span class="dm">◆</span><em>Pixelfox</em><span class="dm">◆</span><em>Knowledge Units</em><span class="dm">◆</span><em>PHN Technology</em><span class="dm">◆</span><em>The 3 Musketeers</em><span class="dm">◆</span><em>Marriott International</em><span class="dm">◆</span><em>ITC Bingo</em><span class="dm">◆</span><em>Phoenix Mills</em><span class="dm">◆</span><em>Conrad Bangalore</em><span class="dm">◆</span><em>Westin Pune</em><span class="dm">◆</span><em>Barukas USA</em><span class="dm">◆</span><em>Pixelfox</em><span class="dm">◆</span><em>Knowledge Units</em><span class="dm">◆</span><em>PHN Technology</em><span class="dm">◆</span><em>The 3 Musketeers</em><span class="dm">◆</span>
-    </div>
-  </div>
-</div>
-
-<!-- AWARDS -->
-<section id="awards" class="awards-s dk">
-  <span class="sl">003 — Awards</span>
-  <div class="awards-ticker" aria-hidden="true">
-    <div class="at-track">
-      <span>Afaqs Foxglove</span><span class="star">★</span><span class="tier">Gold</span><span class="star">·</span><span>DIGIES Awards</span><span class="star">★</span><span class="tier">Gold + Silver</span><span class="star">·</span><span>Trendies Award</span><span class="star">★</span><span class="tier">Winner</span><span class="star">·</span><span>Digixx</span><span class="star">★</span><span class="tier">Silver</span><span class="star">·</span><span>Afaqs Foxglove</span><span class="star">★</span><span class="tier">Gold</span><span class="star">·</span><span>DIGIES Awards</span><span class="star">★</span><span class="tier">Gold + Silver</span><span class="star">·</span><span>Trendies Award</span><span class="star">★</span><span class="tier">Winner</span><span class="star">·</span><span>Digixx</span><span class="star">★</span><span class="tier">Silver</span><span class="star">·</span>
-    </div>
-  </div>
-  <div class="awards-grid fi">
-    <div class="aw-card"><span class="aw-tier">DIGIES · Gold</span><div class="aw-name">Best use of UGC</div><p class="aw-desc">ITC Bingo AI Meme Gallery — audience theories turned into AI-generated creative at scale.</p></div>
-    <div class="aw-card"><span class="aw-tier">Foxglove · Gold</span><div class="aw-name">Hospitality campaign</div><p class="aw-desc">Phoenix Citadel launch strategy recognised for regional reach and cultural positioning.</p></div>
-    <div class="aw-card"><span class="aw-tier">Trendies · Gold</span><div class="aw-name">FMCG creativity</div><p class="aw-desc">Recognised for AI-led engagement storytelling within branded consumer campaigns.</p></div>
-    <div class="aw-card"><span class="aw-tier">Digixx · Silver</span><div class="aw-name">Generative AI</div><p class="aw-desc">Generative AI execution within branded consumer campaigns at production scale.</p></div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="exp-s">
-  <span class="sl">004 — Experience</span>
-  <div class="fi">
-    <div class="exp-row"><div class="exp-date">2025 — Now</div><div><div class="exp-co">PHN Technology</div><div class="exp-role">Key Account Manager</div></div><p class="exp-desc">Leading lifecycle marketing, institutional growth, GTM planning, and client portfolio expansion across IIT, NIT, and IIIT ecosystems.</p></div>
-    <div class="exp-row"><div class="exp-date">2024</div><div><div class="exp-co">Knowledge Units</div><div class="exp-role">Senior Marketing</div></div><p class="exp-desc">Led high-performance campaigns across hospitality and D2C brands including Westin Pune and Barukas. Direct ownership of strategy, creative direction, and results.</p></div>
-    <div class="exp-row"><div class="exp-date">Nov 2022 – Apr 2024</div><div><div class="exp-co">Pixelfox Agency</div><div class="exp-role">Digital Branding Architect</div></div><p class="exp-desc">Built integrated social, influencer, and AI-powered campaigns across FMCG, hospitality, and retail. Award-winning work on ITC Bingo, Phoenix Citadel, Conrad Bangalore, and Phoenix Palladium.</p></div>
-    <div class="exp-row"><div class="exp-date">Nov 2021 – Oct 2022</div><div><div class="exp-co">Brand Aura</div><div class="exp-role">Multi-client Account Lead</div></div><p class="exp-desc">Scaled multilingual lead-generation ecosystems and digital acquisition infrastructure for EdTech clients including iTeskul and Learnovate.</p></div>
-    <div class="exp-row"><div class="exp-date">Jan 2019 – Mar 2021</div><div><div class="exp-co">Impetus Advertising</div><div class="exp-role">Digital Branding Architect</div></div><p class="exp-desc">Turned Pune's F&amp;B brands into loud local favourites through aggressive social-first campaigns, hyperlocal influencer strategy, and culturally sharp content.</p></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact-s dk">
-  <span class="sl">005 — Contact</span>
-  <h2 class="contact-h fi">Got a brand worth <span class="cc">telling?</span><br>Let's <span class="ct">talk.</span></h2>
-  <div class="contact-grid fi">
-    <div>
-      <div class="contact-links">
-        <a class="cl-row" href="mailto:sthapakdhruv@gmail.com"><span class="cl-lbl">Email</span>sthapakdhruv@gmail.com</a>
-        <a class="cl-row" href="tel:+919754979942"><span class="cl-lbl">Phone</span>+91 97549 79942</a>
-        <a class="cl-row" href="https://www.linkedin.com/in/dhruv-sthapak" target="_blank" rel="noopener"><span class="cl-lbl">LinkedIn</span>linkedin.com/in/dhruv-sthapak</a>
-      </div>
-      <!-- Replace href with real PDF path before publishing -->
-      <a class="cv-btn" href="./Dhruv-Sthapak-CV.pdf" download>Download CV ↓</a>
-    </div>
-    <div>
-      <span class="open-to-lbl">Open to</span>
-      <div class="open-to-text"><em>Pune</em> · Bangalore · Mumbai<br>and the right <em>remote.</em></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>Dhruv Sthapak · Marketing &amp; Brand</span>
-  <span>Pune, India · MMXXVI</span>
-  <span>Designed in the open · No template <span class="fdot">◆</span></span>
-</footer>
-
-<script>
-// Cursor: dot snaps, ring lerps
-const cdot=document.getElementById('cdot'),cring=document.getElementById('cring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function tick(){
-  rx+=(mx-rx)*.18; ry+=(my-ry)*.18;
-  cdot.style.cssText=`left:${mx}px;top:${my}px`;
-  cring.style.cssText=`left:${rx}px;top:${ry}px`;
-  requestAnimationFrame(tick);
-})();
-document.querySelectorAll('a,button,.panel,.aw-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cring.classList.add('on');cdot.classList.add('off')});
-  el.addEventListener('mouseleave',()=>{cring.classList.remove('on');cdot.classList.remove('off')});
-});
-
-// Dual-speed parallax
-const gm=document.getElementById('gm'),gs=document.getElementById('gs');
-const sc=document.querySelector('.sh-circle'),sl2=document.querySelector('.sh-ring');
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY;
-  if(gm) gm.style.transform=`translateY(${y*.2}px)`;
-  if(gs) gs.style.transform=`translateY(${y*-.15}px)`;
-  if(sc) sc.style.transform=`translateY(${y*.08}px)`;
-  if(sl2) sl2.style.transform=`translateY(${y*.06}px)`;
-},{passive:true});
-
-// Scroll fade-in
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
-},{threshold:.12});
-document.querySelectorAll('.proj-article,.fi').forEach(el=>io.observe(el));
-</script>
+      // ── PROOF STRIP ──────────────────────────────────────
+      var proofObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.querySelectorAll('.proof-line').forEach(function (line) {
+            line.classList.add('visible');
+          });
+          proofObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.25 });
+      var strip = document.getElementById('proof-strip');
+      if (strip) proofObs.observe(strip);
+    })();
+  </script>
 </body>
 </html>
